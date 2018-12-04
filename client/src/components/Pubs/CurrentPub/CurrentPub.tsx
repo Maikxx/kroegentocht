@@ -15,7 +15,6 @@ export class CurrentPub extends React.Component<Props> {
         const properties = this.loopThroughPubProperties() || []
         const pubNumber = 3
         const randomBeerAmount = this.getArrayOfRandomNumbersWhichEqual(20)[pubNumber] || 1
-        console.log(this.getArrayOfRandomNumbersWhichEqual(20)[pubNumber])
 
         return (
             <div className={this.getClassName()}>
