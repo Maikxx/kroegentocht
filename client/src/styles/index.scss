@@ -1,8 +1,14 @@
+@import './fonts/arialBold';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     list-style: none;
+}
+
+body {
+    font-family: 'Arial Rounded MT', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #app {
