@@ -4,8 +4,16 @@
     border-radius: 4px;
     margin-right: 12px;
     float: left;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
 
     &__amount {
         color: #1D112A;
+    }
+
+    &__icon {
+        height: 18px;
+        margin-left: 6px;
     }
 }
