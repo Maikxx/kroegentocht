@@ -1,7 +1,7 @@
 import './BeerProgress.scss'
 import * as React from 'react'
 import c from 'classnames'
-import { times } from '../../../utils/lodash'
+import { times } from '../../../utils/array'
 import { BeerProgressIcon } from './BeerProgressIcon'
 
 interface Props {

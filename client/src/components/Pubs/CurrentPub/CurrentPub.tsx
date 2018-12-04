@@ -4,6 +4,7 @@ import * as React from 'react'
 import { List } from '../../Core/List/List'
 import { ListItem } from '../../Core/List/ListItem'
 import { BeerAmount } from './BeerAmount/BeerAmount'
+import { getArrayOfRandomNumbersWhichEqual } from '../../../utils/array'
 
 interface Props {
     className?: string
@@ -12,20 +13,23 @@ interface Props {
 
 export class CurrentPub extends React.Component<Props> {
     public render() {
-        const properties = this.loopThroughPubProperties() || []
+        const { pub } = this.props
+
+        const properties = Object.entries(pub) || []
         const pubNumber = 3
-        const randomBeerAmount = this.getArrayOfRandomNumbersWhichEqual(20)[pubNumber] || 1
+        const randomBeerAmount = getArrayOfRandomNumbersWhichEqual(20)[pubNumber] || 1
+        const desiredDataKeys = [ 'name', '' ]
 
         return (
             <div className={this.getClassName()}>
                 <BeerAmount amount={randomBeerAmount}/>
                 <List>
                     {properties
-                        .filter(([ key, value ]) => !!value)
+                        .filter(([ key, value ]) => desiredDataKeys.includes(key) && !!value)
                         .map(([ key, value ], i) => (
                             <ListItem key={i}>
                                 <h3 className={`krt-CurrentPub__data-title`}>
-                                    {key}
+                                    {this.getTransformedKeyName(key)}
                                 </h3>
                                 <span className={`krt-CurrentPub__data-content`}>
                                     {value}
@@ -38,29 +42,12 @@ export class CurrentPub extends React.Component<Props> {
         )
     }
 
-    // https://stackoverflow.com/questions/24020709/generate-an-array-that-adds-up-to-specific-value-using-only-2-numbers
-    private getArrayOfRandomNumbersWhichEqual = (maxTotal: number) => {
-        let sum = 0
-        const numbers = []
-
-        while (sum < maxTotal) {
-            const num = Math.floor((Math.random() * 2) + 4)
-            if (sum + num > maxTotal) {
-                numbers.push(1)
-                sum += 1
-            } else {
-                numbers.push(num)
-                sum += num
-            }
+    private getTransformedKeyName = (key: string) => {
+        if (key === 'name') {
+            return 'Naam'
         }
 
-        return numbers
-    }
-
-    private loopThroughPubProperties = () => {
-        const { pub } = this.props
-
-        return Object.entries(pub)
+        return key
     }
 
     private getClassName = () => {
