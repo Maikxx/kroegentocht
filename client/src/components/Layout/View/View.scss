@@ -1,6 +1,8 @@
 .krt-View {
+    @import '../../../styles/variables/colors';
+
     padding: 24px;
-    background-color: #1D112A;
-    color: #ffffff;
+    background-color: $color-secondary;
+    color: $color-white;
     height: 100vh;
 }

@@ -1,3 +1,4 @@
+import './PageTitle.scss'
 import * as React from 'react'
 import c from 'classnames'
 
@@ -17,6 +18,6 @@ export class PageTitle extends React.Component<Props> {
     private getClassName = () => {
         const { className } = this.props
 
-        return c('krt-Column', {}, className)
+        return c('krt-PageTitle', {}, className)
     }
 }

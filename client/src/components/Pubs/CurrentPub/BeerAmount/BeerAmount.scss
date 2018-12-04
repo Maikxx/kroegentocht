@@ -1,5 +1,7 @@
 .krt-BeerAmount {
-    background-color: #FAAD3F;
+    @import '../../../../styles/variables/colors';
+
+    background-color: $color-primary;
     padding: 3px 12px;
     border-radius: 4px;
     margin-right: 12px;
@@ -9,7 +11,7 @@
     align-items: center;
 
     &__amount {
-        color: #1D112A;
+        color: $color-secondary;
     }
 
     &__icon {

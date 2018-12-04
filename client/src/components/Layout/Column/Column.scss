@@ -1,17 +1,19 @@
 .krt-Column {
+    @import '../../../styles/variables/colors';
+
     display: flex;
     flex-direction: column;
 
     &__title {
         display: block;
         font-size: 1.4rem;
-        color: #FAAD3F;
+        color: $color-primary;
         margin-bottom: 12px;
     }
 
-    .krt-Column {
+    > .krt-Column {
         padding-bottom: 24px;
-        border-left: 2px solid #FAAD3F;
+        border-left: 2px solid $color-primary;
         border-radius: 1px;
         padding-left: 12px;
         width: 100%;
@@ -19,7 +21,7 @@
 
     .krt-Column + .krt-Column {
         padding-bottom: 0;
-        border-top: 2px solid #FAAD3F;
+        border-top: 2px solid $color-primary;
         border-radius: 1px;
         padding-top: 24px;
     }

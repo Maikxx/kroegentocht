@@ -1,7 +1,9 @@
 .krt-Link {
-    color: #45A29E;
+    @import '../../../styles/variables/colors';
+
+    color: $color-link;
 
     &:hover {
-        color: lighten(#45A29E, 5)
+        color: lighten($color-link, 5)
     }
 }

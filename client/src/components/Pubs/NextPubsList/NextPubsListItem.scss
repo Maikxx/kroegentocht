@@ -1,0 +1,12 @@
+.krt-NextPubsListItem {
+    @import '../../../styles/variables/colors';
+
+    &__icon {
+        height: 24px;
+    }
+
+    &__name {
+        margin-left: 12px;
+        color: $color-white;
+    }
+}
