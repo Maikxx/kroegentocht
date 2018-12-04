@@ -6,5 +6,20 @@
         display: block;
         font-size: 1.4rem;
         color: #FAAD3F;
+        margin-bottom: 12px;
+    }
+
+    .krt-Column {
+        padding-bottom: 24px;
+        border-left: 2px solid #FAAD3F;
+        border-radius: 1px;
+        padding-left: 12px;
+    }
+
+    .krt-Column + .krt-Column {
+        padding-bottom: 0;
+        border-top: 2px solid #FAAD3F;
+        border-radius: 1px;
+        padding-top: 24px;
     }
 }
