@@ -3,6 +3,7 @@ import * as React from 'react'
 import c from 'classnames'
 import FilledBeer from '../../../../../assets/icons/filled-beer-dark.svg'
 import { Image } from '../../../Core/Image/Image'
+import { Paragraph } from '../../../Core/Text/Paragraph/Paragraph'
 
 interface Props {
     amount: number
@@ -15,9 +16,9 @@ export class BeerAmount extends React.Component<Props> {
 
         return (
             <div className={this.getClassName()}>
-                <span className={`krt-BeerAmount__amount`}>
+                <Paragraph>
                     {amount}
-                </span>
+                </Paragraph>
                 <Image src={FilledBeer}/>
             </div>
         )

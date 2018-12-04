@@ -7,6 +7,7 @@ import { Row } from '../../Layout/Row/Row'
 import { Column } from '../../Layout/Column/Column'
 import { Image } from '../../Core/Image/Image'
 import { Heading } from '../../Core/Text/Heading/Heading'
+import { Paragraph } from '../../Core/Text/Paragraph/Paragraph'
 
 interface Props {
     className?: string
@@ -22,9 +23,9 @@ export class NextPubsListItem extends React.Component<Props> {
                         <Heading level={3}>
                             DD Club
                         </Heading>
-                        <span className={`krt-NextPubsListItem__address`}>
+                        <Paragraph>
                             Adres
-                        </span>
+                        </Paragraph>
                     </Column>
                 </Row>
             </ListItem>

@@ -7,6 +7,7 @@ import { Link } from '../../Core/Text/Link/Link'
 import { BeerAmount } from './BeerAmount/BeerAmount'
 import { getArrayOfRandomNumbersWhichEqual } from '../../../utils/array'
 import { Heading } from '../../Core/Text/Heading/Heading'
+import { Paragraph } from '../../Core/Text/Paragraph/Paragraph'
 
 interface Props {
     className?: string
@@ -42,19 +43,22 @@ export class CurrentPub extends React.Component<Props> {
                 <List>
                     {properties
                         .filter(([ key, value ]) => desiredDataKeys.includes(key) && !!value)
-                        .map(([ key, value ], i) => (
-                            <ListItem key={i}>
-                                <Heading level={3}>
-                                    {this.getTransformedKeyName(key)}
-                                </Heading>
-                                <span className={`krt-CurrentPub__data-content`}>
-                                    {key === 'website'
-                                        ? <Link to={value}>{value}</Link>
-                                        : value
-                                    }
-                                </span>
-                            </ListItem>
-                        ))
+                        .map(([ key, value ], i) => {
+                            const content = key === 'website'
+                                ? <Link to={value}>{value}</Link>
+                                : value
+
+                            return (
+                                <ListItem key={i}>
+                                    <Heading level={3}>
+                                        {this.getTransformedKeyName(key)}
+                                    </Heading>
+                                    <Paragraph>
+                                        {content}
+                                    </Paragraph>
+                                </ListItem>
+                            )
+                        })
                     }
                 </List>
             </div>

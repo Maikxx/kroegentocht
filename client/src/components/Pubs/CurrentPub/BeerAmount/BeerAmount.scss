@@ -9,10 +9,7 @@
     display: inline-flex;
     flex-direction: row;
     align-items: center;
-
-    &__amount {
-        color: $color-secondary;
-    }
+    color: $color-secondary;
 
     .krt-Image {
         height: 18px;
