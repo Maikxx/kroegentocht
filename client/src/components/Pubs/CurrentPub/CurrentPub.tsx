@@ -3,6 +3,7 @@ import c from 'classnames'
 import * as React from 'react'
 import { List } from '../../Core/List/List'
 import { ListItem } from '../../Core/List/ListItem'
+import { Link } from '../../Core/Link/Link'
 import { BeerAmount } from './BeerAmount/BeerAmount'
 import { getArrayOfRandomNumbersWhichEqual } from '../../../utils/array'
 
@@ -46,7 +47,14 @@ export class CurrentPub extends React.Component<Props> {
                                     {this.getTransformedKeyName(key)}
                                 </h3>
                                 <span className={`krt-CurrentPub__data-content`}>
-                                    {value}
+                                    {key === 'website'
+                                        ? (
+                                            <Link to={value}>
+                                                {value}
+                                            </Link>
+                                        )
+                                        : value
+                                    }
                                 </span>
                             </ListItem>
                         ))

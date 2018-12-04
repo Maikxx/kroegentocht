@@ -1,0 +1,7 @@
+.krt-Link {
+    color: #45A29E;
+
+    &:hover {
+        color: lighten(#45A29E, 5)
+    }
+}
