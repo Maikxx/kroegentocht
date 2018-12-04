@@ -11,8 +11,23 @@ import pubs from '../../assets/data/barsAndPubs.json'
 
 interface Props {}
 
-export class RootView extends React.Component<Props> {
+interface State {
+    beerProgress: number
+}
+
+export class RootView extends React.Component<Props, State> {
+    public state: State = {
+        beerProgress: 0,
+    }
+
+    public componentDidMount() {
+        window.addEventListener('click', () => {
+            this.setState({ beerProgress: this.state.beerProgress + 1 })
+        })
+    }
+
     public render() {
+        const { beerProgress } = this.state
         const pub = pubs[5]
 
         return (
@@ -24,7 +39,7 @@ export class RootView extends React.Component<Props> {
                     </Column>
                     <Column>
                         <Column title={`Voortgang`}>
-                            <BeerProgress current={3} />
+                            <BeerProgress progress={beerProgress} />
                         </Column>
                         <Column title={`Volgende kroeg`}>
                             <NextPubsList />

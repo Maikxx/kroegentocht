@@ -6,19 +6,19 @@ import { BeerProgressIcon } from './BeerProgressIcon'
 
 interface Props {
     className?: string
-    current: number
+    progress: number
 }
 
 export class BeerProgress extends React.Component<Props> {
     public render() {
-        const { current } = this.props
+        const { progress } = this.props
 
         return (
             <div className={this.getClassName()}>
-                {times(current).map((n: number) => (
+                {times(progress).map((n: number) => (
                     <BeerProgressIcon filled={true} key={n}/>
                 ))}
-                {times(20 - current).map((n: number) => (
+                {times(20 - progress).map((n: number) => (
                     <BeerProgressIcon filled={false} key={n}/>
                 ))}
             </div>
