@@ -1,5 +1,8 @@
 # Kroegentocht
 
+This project is made for AUAS.
+The project is in Dutch, so be wary.
+
 ## Installation
 
 * Clone the repository: `git clone git@github.com:Maikxx/kroegentocht.git`
