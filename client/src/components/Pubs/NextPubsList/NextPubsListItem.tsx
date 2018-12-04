@@ -6,6 +6,7 @@ import FilledBeer from '../../../../assets/icons/filled-beer.svg'
 import { Row } from '../../Layout/Row/Row'
 import { Column } from '../../Layout/Column/Column'
 import { Image } from '../../Core/Image/Image'
+import { Heading } from '../../Core/Text/Heading/Heading'
 
 interface Props {
     className?: string
@@ -18,9 +19,9 @@ export class NextPubsListItem extends React.Component<Props> {
                 <Row>
                     <Image src={FilledBeer}/>
                     <Column>
-                        <h3 className={`krt-NextPubsListItem__name`}>
+                        <Heading level={3}>
                             DD Club
-                        </h3>
+                        </Heading>
                         <span className={`krt-NextPubsListItem__address`}>
                             Adres
                         </span>

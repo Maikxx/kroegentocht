@@ -3,9 +3,10 @@ import c from 'classnames'
 import * as React from 'react'
 import { List } from '../../Core/List/List'
 import { ListItem } from '../../Core/List/ListItem'
-import { Link } from '../../Core/Link/Link'
+import { Link } from '../../Core/Text/Link/Link'
 import { BeerAmount } from './BeerAmount/BeerAmount'
 import { getArrayOfRandomNumbersWhichEqual } from '../../../utils/array'
+import { Heading } from '../../Core/Text/Heading/Heading'
 
 interface Props {
     className?: string
@@ -43,9 +44,9 @@ export class CurrentPub extends React.Component<Props> {
                         .filter(([ key, value ]) => desiredDataKeys.includes(key) && !!value)
                         .map(([ key, value ], i) => (
                             <ListItem key={i}>
-                                <h3 className={`krt-CurrentPub__data-title`}>
+                                <Heading level={3}>
                                     {this.getTransformedKeyName(key)}
-                                </h3>
+                                </Heading>
                                 <span className={`krt-CurrentPub__data-content`}>
                                     {key === 'website'
                                         ? <Link to={value}>{value}</Link>
