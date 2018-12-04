@@ -1,6 +1,10 @@
 .krt-NextPubsListItem {
     @import '../../../styles/variables/colors';
 
+    .krt-Row {
+        align-items: center;
+    }
+
     .krt-Image {
         height: 24px;
     }
