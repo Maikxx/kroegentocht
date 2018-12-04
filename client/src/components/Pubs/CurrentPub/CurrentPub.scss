@@ -4,6 +4,10 @@
         overflow-y: scroll;
     }
 
+    .krt-ListItem + .krt-ListItem {
+        margin-top: 12px;
+    }
+
     &__data-title {
         display: block;
         font-size: 1.2rem;

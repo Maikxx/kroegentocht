@@ -18,7 +18,21 @@ export class CurrentPub extends React.Component<Props> {
         const properties = Object.entries(pub) || []
         const pubNumber = 3
         const randomBeerAmount = getArrayOfRandomNumbersWhichEqual(20)[pubNumber] || 1
-        const desiredDataKeys = [ 'name', '' ]
+        const desiredDataKeys = [
+            'name',
+            'cuisine',
+            'opening_hours',
+            'phone',
+            'website',
+            'smoking',
+            'description',
+            'wheelchair',
+            'darkroom',
+            'atm',
+            'karaoke',
+            'payment:cash',
+            'brewery',
+        ]
 
         return (
             <div className={this.getClassName()}>
@@ -43,11 +57,36 @@ export class CurrentPub extends React.Component<Props> {
     }
 
     private getTransformedKeyName = (key: string) => {
-        if (key === 'name') {
+        switch (key) {
+        case 'name':
             return 'Naam'
+        case 'cuisine':
+            return 'Keuken'
+        case 'opening_hours':
+            return 'Openeningstijden'
+        case 'phone':
+            return 'Telefoonnummer'
+        case 'website':
+            return 'Website'
+        case 'smoking':
+            return 'Roken toegestaan'
+        case 'description':
+            return 'Beschrijving'
+        case 'wheelchair':
+            return 'Rolstoelvriendelijk'
+        case 'darkroom':
+            return 'Heeft een darkroom'
+        case 'atm':
+            return 'Heeft een geldautomaat'
+        case 'karaoke':
+            return 'Doet aan karaoke'
+        case 'payment:cash':
+            return 'Betalen met cash'
+        case 'brewery':
+            return 'Heeft een brouwerij'
+        default:
+            return key
         }
-
-        return key
     }
 
     private getClassName = () => {
