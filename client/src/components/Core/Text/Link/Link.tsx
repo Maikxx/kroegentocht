@@ -10,10 +10,13 @@ interface Props {
 export class Link extends React.Component<Props> {
     public render() {
         const { children, to } = this.props
+        const href = !to.includes('http')
+            ? `http://${to}`
+            : to
 
         return (
             <a
-                href={to}
+                href={href}
                 target={`_blank`}
                 className={this.getClassName()}
             >
