@@ -12,23 +12,34 @@ interface Props {
 
 export class CurrentPub extends React.Component<Props> {
     public render() {
-        console.log(this.props.pub)
+        const properties = this.loopThroughPubProperties() || []
 
         return (
             <div className={this.getClassName()}>
                 <BeerAmount amount={1}/>
                 <List>
-                    <ListItem>
-                        <h3 className={`krt-CurrentPub__data-title`}>
-                            Data title
-                        </h3>
-                        <span className={`krt-CurrentPub__data-content`}>
-                            Data content
-                        </span>
-                    </ListItem>
+                    {properties
+                        .filter(([ key, value ]) => !!value)
+                        .map(([ key, value ], i) => (
+                            <ListItem key={i}>
+                                <h3 className={`krt-CurrentPub__data-title`}>
+                                    {key}
+                                </h3>
+                                <span className={`krt-CurrentPub__data-content`}>
+                                    {value}
+                                </span>
+                            </ListItem>
+                        ))
+                    }
                 </List>
             </div>
         )
+    }
+
+    private loopThroughPubProperties = () => {
+        const { pub } = this.props
+
+        return Object.entries(pub)
     }
 
     private getClassName = () => {

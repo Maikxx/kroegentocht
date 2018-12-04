@@ -1,5 +1,14 @@
 .krt-CurrentPub {
+    .krt-List {
+        overflow-y: scroll;
+    }
+
     &__data-title {
         display: block;
+        font-size: 1.2rem;
+    }
+
+    &__data-content {
+        font-size: .8rem;
     }
 }

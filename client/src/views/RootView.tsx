@@ -11,7 +11,7 @@ interface Props {}
 
 export class RootView extends React.Component<Props> {
     public render() {
-        const pub = pubs[0]
+        const pub = pubs[5]
 
         return (
             <View>
