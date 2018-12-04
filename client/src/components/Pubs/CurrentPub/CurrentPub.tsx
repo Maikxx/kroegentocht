@@ -48,11 +48,7 @@ export class CurrentPub extends React.Component<Props> {
                                 </h3>
                                 <span className={`krt-CurrentPub__data-content`}>
                                     {key === 'website'
-                                        ? (
-                                            <Link to={value}>
-                                                {value}
-                                            </Link>
-                                        )
+                                        ? <Link to={value}>{value}</Link>
                                         : value
                                     }
                                 </span>

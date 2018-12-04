@@ -2,6 +2,7 @@ import './BeerAmount.scss'
 import * as React from 'react'
 import c from 'classnames'
 import FilledBeer from '../../../../../assets/icons/filled-beer-dark.svg'
+import { Image } from '../../../Core/Image/Image'
 
 interface Props {
     amount: number
@@ -17,7 +18,7 @@ export class BeerAmount extends React.Component<Props> {
                 <span className={`krt-BeerAmount__amount`}>
                     {amount}
                 </span>
-                <img src={FilledBeer} className={`krt-BeerAmount__icon`}/>
+                <Image src={FilledBeer}/>
             </div>
         )
     }
