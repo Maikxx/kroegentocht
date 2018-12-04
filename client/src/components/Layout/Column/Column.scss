@@ -1,4 +1,10 @@
 .krt-Column {
     display: flex;
     flex-direction: column;
+
+    &__title {
+        display: block;
+        font-size: 1.4rem;
+        color: #FAAD3F;
+    }
 }

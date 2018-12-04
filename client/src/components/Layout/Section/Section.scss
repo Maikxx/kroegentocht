@@ -1,4 +1,9 @@
 .krt-Section {
     display: flex;
     flex-direction: row;
+    width: 100%;
+
+    .krt-Column {
+        width: 50%;
+    }
 }

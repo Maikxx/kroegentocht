@@ -4,16 +4,22 @@ import c from 'classnames'
 
 interface Props {
     className?: string
+    title?: string
 }
 
 export class Column extends React.Component<Props> {
     public render() {
-        const { children } = this.props
+        const { children, title } = this.props
 
         return (
-            <div className={this.getClassName()}>
+            <section className={this.getClassName()}>
+                {title && (
+                    <h2 className={`krt-Column__title`}>
+                        {title}
+                    </h2>
+                )}
                 {children}
-            </div>
+            </section>
         )
     }
 
