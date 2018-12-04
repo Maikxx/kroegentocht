@@ -5,8 +5,16 @@
         height: 24px;
     }
 
-    &__name {
+    .krt-Column {
         margin-left: 12px;
-        color: $color-white;
+    }
+
+    &__name,
+    &__address {
+        color: $color-primary;
+    }
+
+    &__address {
+        font-size: .8rem;
     }
 }

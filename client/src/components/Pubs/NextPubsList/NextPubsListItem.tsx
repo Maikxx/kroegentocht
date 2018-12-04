@@ -20,6 +20,9 @@ export class NextPubsListItem extends React.Component<Props> {
                         <h3 className={`krt-NextPubsListItem__name`}>
                             DD Club
                         </h3>
+                        <span className={`krt-NextPubsListItem__address`}>
+                            Adres
+                        </span>
                     </Column>
                 </Row>
             </ListItem>
