@@ -34,14 +34,6 @@ export class RootView extends React.Component<Props, State> {
             selectedPub: this.filteredPubs[0],
             beerProgress: Number(this.filteredPubs[0].beerAmount),
         })
-
-        window.addEventListener('click', () => {
-            this.setState({
-                beerProgress: this.state.beerProgress + 1,
-                selectedPub: this.filteredPubs.find(pub => pub.full_id === this.state.selectedPub.full_id),
-                clickState: this.getNextImageState(),
-            })
-        })
     }
 
     public render() {
@@ -89,11 +81,24 @@ export class RootView extends React.Component<Props, State> {
             return '4'
         } else if (clickState === '4') {
             return '5'
+        } else {
+            return '5s'
         }
     }
 
     private onSelectPub = (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => {
-        this.setState({ selectedPub: this.filteredPubs.find(pub => pub.full_id === pubId) })
+        const { beerProgress } = this.state
+        const newlySelectedPub = this.filteredPubs.find(pub => pub.full_id === pubId)
+        const nextClickState = this.getNextImageState()
+        const newBeerProgress = nextClickState !== '5s'
+            ? (beerProgress + Number(newlySelectedPub.beerAmount))
+            : beerProgress
+
+        this.setState({
+            selectedPub: newlySelectedPub,
+            beerProgress: newBeerProgress,
+            clickState: nextClickState,
+        })
     }
 
     private getNextPubs = () => {
