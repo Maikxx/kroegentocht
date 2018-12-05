@@ -26,19 +26,11 @@ export class RootView extends React.Component<Props, State> {
 
     private filteredPubs: Pub[]
 
-    public componentDidMount() {
-        const selectedPubIds = [ 'n2725878434', 'n1724352586', 'n1741897815', 'n1083668064', 'n1221258124' ]
-        this.filteredPubs = pubs.filter(pub => selectedPubIds.includes(pub.full_id))
-
-        this.setState({
-            selectedPub: this.filteredPubs[0],
-            beerProgress: Number(this.filteredPubs[0].beerAmount),
-        })
-    }
-
     public render() {
         const { beerProgress, selectedPub, clickState } = this.state
+        const selectedPubIds = [ 'n2725878434', 'n1724352586', 'n1741897815', 'n1083668064', 'n1221258124' ]
         const nextPubs = this.getNextPubs()
+        this.filteredPubs = selectedPubIds.map(pubId => pubs.find(pub => pub.full_id === pubId))
 
         return (
             <View>
