@@ -85,34 +85,24 @@ export class CurrentPub extends React.Component<Props> {
 
     private getTransformedKeyName = (key: string) => {
         switch (key) {
-        case 'name':
-            return 'Name'
-        case 'cuisine':
-            return 'Cuisine'
         case 'opening_hours':
             return 'Opening hours'
         case 'phone':
             return 'Phone number'
-        case 'website':
-            return 'Website'
         case 'smoking':
             return 'Smoking allowed'
-        case 'description':
-            return 'Description'
         case 'wheelchair':
             return 'Wheelchair friendly'
         case 'darkroom':
             return 'Has a darkroom'
         case 'atm':
             return 'Has an ATM'
-        case 'karaoke':
-            return 'Karaoke'
         case 'payment:cash':
             return 'Paying with cash allowed'
         case 'brewery':
             return 'Has a own brewery'
         default:
-            return key
+            return `${key[0].toUpperCase()}${key.slice(1)}`
         }
     }
 
