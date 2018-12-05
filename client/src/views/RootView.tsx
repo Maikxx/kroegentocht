@@ -41,6 +41,11 @@ export class RootView extends React.Component<Props, State> {
                         {selectedPub && (
                             <CurrentPub pub={selectedPub} />
                         )}
+                        {!selectedPub && (
+                            <Paragraph>
+                                Selecteer een kroeg om te beginnen!
+                            </Paragraph>
+                        )}
                     </Column>
                     <Column>
                         <Column title={`Voortgang`}>
