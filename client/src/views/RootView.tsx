@@ -8,6 +8,8 @@ import { NextPubsList } from '../components/Pubs/NextPubsList/NextPubsList'
 import { PubsMap } from '../components/Pubs/PubsMap/PubsMap'
 import pubs from '../../assets/data/barsAndPubs.json'
 import { Pub } from '../types/Pub'
+import { Paragraph } from '../components/Core/Text/Paragraph/Paragraph'
+import { Link } from '../components/Core/Text/Link/Link'
 
 interface Props {}
 
@@ -45,7 +47,18 @@ export class RootView extends React.Component<Props, State> {
                             <BeerProgress progress={beerProgress} />
                         </Column>
                         <Column title={`Volgende kroegen`}>
-                            <NextPubsList nextPubs={nextPubs}/>
+                            {beerProgress !== 20 && <NextPubsList nextPubs={nextPubs}/>}
+                            {beerProgress === 20 && (
+                                <Paragraph>
+                                    Je bent aan het eind gekomen van de kroegentocht!
+                                    <Link
+                                        onClick={() => window.location.reload()}
+                                        target={`_self`}
+                                    >
+                                        Klik hier om opnieuw te beginnen.
+                                    </Link>
+                                </Paragraph>
+                            )}
                         </Column>
                     </Column>
                 </Section>

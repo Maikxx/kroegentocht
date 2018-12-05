@@ -1,1 +1,5 @@
-.krt-Paragraph {}
+.krt-Paragraph {
+    > .krt-Link {
+        display: block;
+    }
+}

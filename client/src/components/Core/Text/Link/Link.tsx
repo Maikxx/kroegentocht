@@ -4,21 +4,29 @@ import c from 'classnames'
 
 interface Props {
     className?: string
-    to: string
+    to?: string
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void
+    target?: '_blank' | '_self' | '_parent' | '_top'
 }
 
 export class Link extends React.Component<Props> {
+    public static defaultProps: Props = {
+        target: '_blank',
+    }
+
     public render() {
-        const { children, to } = this.props
-        const href = !to.includes('http')
-            ? `http://${to}`
-            : to
+        const { className, children, to, ...restProps } = this.props
+        const href = to
+            ? to.includes('http')
+                ? to
+                : `http://${to}`
+            : `#`
 
         return (
             <a
                 href={href}
-                target={`_blank`}
                 className={this.getClassName()}
+                {...restProps}
             >
                 {children}
             </a>
