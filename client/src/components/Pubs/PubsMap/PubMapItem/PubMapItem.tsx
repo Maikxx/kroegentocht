@@ -22,8 +22,10 @@ export class PubMapItem extends React.Component<Props> {
     }
 
     private getClassName = () => {
-        const { className } = this.props
+        const { className, pub } = this.props
 
-        return c('krt-PubMapItem', {}, className)
+        return c('krt-PubMapItem', {
+            [`krt-PubMapItem--${pub.full_id}`]: true,
+        }, className)
     }
 }

@@ -4,7 +4,6 @@
     position: relative;
     width: 603px;
     height: inherit;
-    background-color: $color-orange;
     border-radius: 4px;
     margin: 0 auto;
 
@@ -19,12 +18,10 @@
 
     &__1s--active.krt-Image,
     &__1--active.krt-Image,
-    &__2s--active.krt-Image,
     &__2--active.krt-Image,
-    &__3s--active.krt-Image,
     &__3--active.krt-Image,
-    &__4s--active.krt-Image,
-    &__4--active.krt-Image {
+    &__4--active.krt-Image,
+    &__5--active.krt-Image {
         opacity: 1;
     }
 }

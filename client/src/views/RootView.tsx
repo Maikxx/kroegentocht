@@ -21,7 +21,7 @@ export class RootView extends React.Component<Props, State> {
     public state: State = {
         beerProgress: 0,
         selectedPub: undefined,
-        clickState: '1',
+        clickState: '1s',
     }
 
     private filteredPubs: Pub[]
@@ -30,12 +30,15 @@ export class RootView extends React.Component<Props, State> {
         const selectedPubIds = [ 'n2725878434', 'n1724352586', 'n1741897815', 'n1083668064', 'n1221258124' ]
         this.filteredPubs = pubs.filter(pub => selectedPubIds.includes(pub.full_id))
 
-        this.setState({ selectedPub: this.filteredPubs[0] })
+        this.setState({
+            selectedPub: this.filteredPubs[0],
+            beerProgress: Number(this.filteredPubs[0].beerAmount),
+        })
 
         window.addEventListener('click', () => {
             this.setState({
                 beerProgress: this.state.beerProgress + 1,
-                selectedPub: this.filteredPubs[this.state.beerProgress + 1],
+                selectedPub: this.filteredPubs.find(pub => pub.full_id === this.state.selectedPub.full_id),
                 clickState: this.getNextImageState(),
             })
         })
@@ -76,22 +79,16 @@ export class RootView extends React.Component<Props, State> {
     private getNextImageState = () => {
         const { clickState } = this.state
 
-        if (clickState === '1') {
-            return '1s'
-        } else if (clickState === '1s') {
+        if (clickState === '1s') {
+            return '1'
+        } else if (clickState === '1') {
             return '2'
         } else if (clickState === '2') {
-            return '2s'
-        } else if (clickState === '2s') {
             return '3'
         } else if (clickState === '3') {
-            return '3s'
-        } else if (clickState === '3s') {
             return '4'
         } else if (clickState === '4') {
-            return '4s'
-        } else {
-            return '1'
+            return '5'
         }
     }
 
