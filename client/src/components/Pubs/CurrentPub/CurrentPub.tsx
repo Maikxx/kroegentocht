@@ -19,6 +19,7 @@ export class CurrentPub extends React.Component<Props> {
         const { pub } = this.props
 
         const properties = Object.entries(pub) || []
+        const fullAddress = `${pub['addr:street']} ${pub['addr:housenumber']}, ${pub['addr:postcode']}, Nederland`
         const { beerAmount } = pub
         const desiredDataKeys = [
             'name',
@@ -59,6 +60,14 @@ export class CurrentPub extends React.Component<Props> {
                             )
                         })
                     }
+                    <ListItem>
+                        <Heading level={3}>
+                            Adres
+                        </Heading>
+                        <Paragraph>
+                            {fullAddress}
+                        </Paragraph>
+                    </ListItem>
                 </List>
             </div>
         )
