@@ -2,7 +2,6 @@ import * as React from 'react'
 import { View } from '../components/Layout/View/View'
 import { Section } from '../components/Layout/Section/Section'
 import { Column } from '../components/Layout/Column/Column'
-import { PageTitle } from '../components/Chrome/PageTitle/PageTitle'
 import { CurrentPub } from '../components/Pubs/CurrentPub/CurrentPub'
 import { BeerProgress } from '../components/Pubs/BeerProgress/BeerProgress'
 import { NextPubsList } from '../components/Pubs/NextPubsList/NextPubsList'
@@ -45,7 +44,6 @@ export class RootView extends React.Component<Props, State> {
 
         return (
             <View>
-                <PageTitle />
                 <Section>
                     <Column title={`Huidige kroeg`}>
                         {selectedPub && (

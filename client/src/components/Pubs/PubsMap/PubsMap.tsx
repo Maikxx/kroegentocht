@@ -3,6 +3,11 @@ import * as React from 'react'
 import c from 'classnames'
 import { Pub } from '../../../types/Pub'
 import { PubMapItem } from './PubMapItem/PubMapItem'
+import { Image } from '../../Core/Image/Image'
+import FirstGif from './images/first.gif'
+import SecondGif from './images/second.gif'
+import ThirdGif from './images/third.gif'
+import FourthGif from './images/fourth.gif'
 
 interface Props {
     className?: string
@@ -27,6 +32,10 @@ export class PubsMap extends React.Component<Props> {
                         key={pub.full_id}
                     />
                 ))}
+                <Image src={FirstGif}/>
+                <Image src={SecondGif}/>
+                <Image src={ThirdGif}/>
+                <Image src={FourthGif}/>
             </div>
         )
     }
