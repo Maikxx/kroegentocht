@@ -23,6 +23,7 @@ export interface Pub {
     'contact:email': string
     'contact:phone': string
     'contact:website': string
+    beerAmount: string
     tourism: string
     darkroom: string
     'name:nl': string

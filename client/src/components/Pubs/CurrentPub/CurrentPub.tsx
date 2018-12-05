@@ -5,7 +5,6 @@ import { List } from '../../Core/List/List'
 import { ListItem } from '../../Core/List/ListItem'
 import { Link } from '../../Core/Text/Link/Link'
 import { BeerAmount } from './BeerAmount/BeerAmount'
-import { getArrayOfRandomNumbersWhichEqual } from '../../../utils/array'
 import { Heading } from '../../Core/Text/Heading/Heading'
 import { Paragraph } from '../../Core/Text/Paragraph/Paragraph'
 import { Pub } from '../../../types/Pub'
@@ -20,8 +19,7 @@ export class CurrentPub extends React.Component<Props> {
         const { pub } = this.props
 
         const properties = Object.entries(pub) || []
-        const pubNumber = 3
-        const randomBeerAmount = getArrayOfRandomNumbersWhichEqual(20)[pubNumber] || 1
+        const { beerAmount } = pub
         const desiredDataKeys = [
             'name',
             'cuisine',
@@ -40,7 +38,7 @@ export class CurrentPub extends React.Component<Props> {
 
         return (
             <div className={this.getClassName()}>
-                <BeerAmount amount={randomBeerAmount}/>
+                <BeerAmount amount={Number(beerAmount)}/>
                 <List>
                     {properties
                         .filter(([ key, value ]) => desiredDataKeys.includes(key) && !!value)
