@@ -17,11 +17,12 @@ interface Props {
     pubs?: Pub[]
     onSelectPub: (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => void
     clickState: string
+    nextPubId?: string
 }
 
 export class PubsMap extends React.Component<Props> {
     public render() {
-        const { pubs, onSelectPub, clickState } = this.props
+        const { pubs, onSelectPub, clickState, nextPubId } = this.props
 
         if (!pubs) {
             return null
@@ -32,6 +33,7 @@ export class PubsMap extends React.Component<Props> {
                 {pubs.map(pub => (
                     <PubMapItem
                         pub={pub}
+                        nextPubId={nextPubId}
                         onSelectPub={onSelectPub}
                         key={pub.full_id}
                     />

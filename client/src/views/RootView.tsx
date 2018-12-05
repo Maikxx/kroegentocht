@@ -54,10 +54,19 @@ export class RootView extends React.Component<Props, State> {
                         pubs={this.filteredPubs}
                         onSelectPub={this.onSelectPub}
                         clickState={clickState}
+                        nextPubId={this.getNextPubId()}
                     />
                 </Section>
             </View>
         )
+    }
+
+    private getNextPubId = () => {
+        const { selectedPub } = this.state
+        const { filteredPubs } = this
+        const currentPubIndex = filteredPubs.indexOf(selectedPub)
+        const nextPub = filteredPubs[currentPubIndex + 1] || undefined
+        return nextPub && nextPub.full_id
     }
 
     private getNextImageState = () => {

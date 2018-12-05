@@ -5,27 +5,32 @@ import { Pub } from '../../../../types/Pub'
 
 interface Props {
     className?: string
+    nextPubId?: string
     pub: Pub
     onSelectPub: (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => void
 }
 
 export class PubMapItem extends React.Component<Props> {
     public render() {
-        const { pub, onSelectPub } = this.props
+        const { pub, onSelectPub, nextPubId } = this.props
+        const { full_id } = pub
+        const isClickable = nextPubId === full_id
 
         return (
             <button
                 className={this.getClassName()}
-                onClick={event => onSelectPub(event, pub.full_id)}
+                onClick={event => isClickable && onSelectPub(event, full_id)}
             />
         )
     }
 
     private getClassName = () => {
-        const { className, pub } = this.props
+        const { className, pub, nextPubId } = this.props
+        const { full_id } = pub
 
         return c('krt-PubMapItem', {
-            [`krt-PubMapItem--${pub.full_id}`]: true,
+            [`krt-PubMapItem--${full_id}`]: true,
+            'krt-PubMapItem--is-clickable': nextPubId === full_id,
         }, className)
     }
 }

@@ -1,10 +1,13 @@
 .krt-PubMapItem {
+    @import '../../../../styles/variables/colors';
+
     border: 0;
     border-radius: 50%;
     width: 20px;
     height: 20px;
     position: absolute;
-    background-color: #3b208d;
+    background-color: $color-dark-purple;
+    transition: background-color .2s ease-in-out, transform .2s ease-in-out;
     z-index: 100;
 
     &--n1083668064 {
@@ -30,5 +33,15 @@
     &--n2725878434 {
         top: 75%;
         left: 66%;
+    }
+
+    &--is-clickable {
+        background-color: lighten($color-dark-purple, 15);
+        cursor: pointer;
+
+        &:hover {
+            background-color: $color-dark-purple;
+            transform: scale(1.5);
+        }
     }
 }
