@@ -14,13 +14,9 @@ export class NextPubsList extends React.Component<Props> {
     public render() {
         const { nextPubs } = this.props
 
-        if (!nextPubs) {
-            return null
-        }
-
         return (
             <List className={this.getClassName()}>
-                {nextPubs.map(nextPub => (
+                {nextPubs && nextPubs.map(nextPub => (
                     <NextPubsListItem
                         key={nextPub.full_id}
                         pub={nextPub}
