@@ -8,23 +8,27 @@ import { Column } from '../../Layout/Column/Column'
 import { Image } from '../../Core/Image/Image'
 import { Heading } from '../../Core/Text/Heading/Heading'
 import { Paragraph } from '../../Core/Text/Paragraph/Paragraph'
+import { Pub } from '../../../types/Pub'
 
 interface Props {
     className?: string
+    pub: Pub
 }
 
 export class NextPubsListItem extends React.Component<Props> {
     public render() {
+        const { pub } = this.props
+
         return (
             <ListItem className={this.getClassName()}>
                 <Row>
                     <Image src={FilledBeer}/>
                     <Column>
                         <Heading level={3}>
-                            DD Club
+                            {pub.name}
                         </Heading>
                         <Paragraph>
-                            Adres
+                            {pub['addr:street']}
                         </Paragraph>
                     </Column>
                 </Row>

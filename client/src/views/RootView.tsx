@@ -32,7 +32,10 @@ export class RootView extends React.Component<Props, State> {
         this.setState({ selectedPub: this.filteredPubs[0] })
 
         window.addEventListener('click', () => {
-            this.setState({ beerProgress: this.state.beerProgress + 1, selectedPub: this.filteredPubs[this.state.beerProgress + 1] })
+            this.setState({
+                beerProgress: this.state.beerProgress + 1,
+                selectedPub: this.filteredPubs[this.state.beerProgress + 1],
+            })
         })
     }
 
@@ -59,10 +62,17 @@ export class RootView extends React.Component<Props, State> {
                     </Column>
                 </Section>
                 <Section>
-                    <PubsMap />
+                    <PubsMap
+                        pubs={this.filteredPubs}
+                        onSelectPub={this.onSelectPub}
+                    />
                 </Section>
             </View>
         )
+    }
+
+    private onSelectPub = (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => {
+        this.setState({ selectedPub: this.filteredPubs.find(pub => pub.full_id === pubId) })
     }
 
     private getNextPubs = () => {

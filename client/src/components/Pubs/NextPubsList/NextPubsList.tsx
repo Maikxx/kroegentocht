@@ -21,7 +21,10 @@ export class NextPubsList extends React.Component<Props> {
         return (
             <List className={this.getClassName()}>
                 {nextPubs.map(nextPub => (
-                    <NextPubsListItem key={nextPub.full_id} />
+                    <NextPubsListItem
+                        key={nextPub.full_id}
+                        pub={nextPub}
+                    />
                 ))}
             </List>
         )
