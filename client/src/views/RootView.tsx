@@ -38,6 +38,7 @@ export class RootView extends React.Component<Props, State> {
 
     public render() {
         const { beerProgress, selectedPub } = this.state
+        const nextPubs = this.getNextPubs()
 
         return (
             <View>
@@ -53,7 +54,7 @@ export class RootView extends React.Component<Props, State> {
                             <BeerProgress progress={beerProgress} />
                         </Column>
                         <Column title={`Volgende kroeg`}>
-                            <NextPubsList />
+                            <NextPubsList nextPubs={nextPubs}/>
                         </Column>
                     </Column>
                 </Section>
@@ -62,5 +63,17 @@ export class RootView extends React.Component<Props, State> {
                 </Section>
             </View>
         )
+    }
+
+    private getNextPubs = () => {
+        const { selectedPub } = this.state
+        const { filteredPubs } = this
+
+        if (!filteredPubs || !selectedPub) {
+            return null
+        }
+
+        const currentPubIndex = filteredPubs.indexOf(selectedPub)
+        return filteredPubs.slice(currentPubIndex + 1)
     }
 }
