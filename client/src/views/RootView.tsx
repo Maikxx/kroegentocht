@@ -82,8 +82,8 @@ export class RootView extends React.Component<Props, State> {
     private getNextPubId = () => {
         const { selectedPub } = this.state
         const { filteredPubs } = this
-        const currentPubIndex = filteredPubs.indexOf(selectedPub)
-        const nextPub = filteredPubs[currentPubIndex + 1] || undefined
+
+        const nextPub = filteredPubs[filteredPubs.indexOf(selectedPub) + 1] || undefined
         return nextPub && nextPub.full_id
     }
 
@@ -107,6 +107,7 @@ export class RootView extends React.Component<Props, State> {
 
     private onSelectPub = (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => {
         const { beerProgress } = this.state
+
         const newlySelectedPub = this.filteredPubs.find(pub => pub.full_id === pubId)
         const nextClickState = this.getNextImageState()
         const newBeerProgress = nextClickState !== '5s'
