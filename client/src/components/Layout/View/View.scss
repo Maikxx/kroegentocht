@@ -3,7 +3,7 @@
 
     padding: 24px;
     color: $color-white;
-    height: 100vh;
+    min-height: 100vh;
 
     > .krt-Section + .krt-Section {
         margin-top: 24px;
