@@ -62,7 +62,7 @@ export class CurrentPub extends React.Component<Props> {
                     }
                     <ListItem>
                         <Heading level={3}>
-                            Adres
+                            Address
                         </Heading>
                         <Paragraph>
                             {fullAddress}
@@ -76,31 +76,31 @@ export class CurrentPub extends React.Component<Props> {
     private getTransformedKeyName = (key: string) => {
         switch (key) {
         case 'name':
-            return 'Naam'
+            return 'Name'
         case 'cuisine':
-            return 'Keuken'
+            return 'Cuisine'
         case 'opening_hours':
-            return 'Openeningstijden'
+            return 'Opening hours'
         case 'phone':
-            return 'Telefoonnummer'
+            return 'Phone number'
         case 'website':
             return 'Website'
         case 'smoking':
-            return 'Roken toegestaan'
+            return 'Smoking allowed'
         case 'description':
-            return 'Beschrijving'
+            return 'Description'
         case 'wheelchair':
-            return 'Rolstoelvriendelijk'
+            return 'Wheelchair friendly'
         case 'darkroom':
-            return 'Heeft een darkroom'
+            return 'Has a darkroom'
         case 'atm':
-            return 'Heeft een geldautomaat'
+            return 'Has an ATM'
         case 'karaoke':
-            return 'Doet aan karaoke'
+            return 'Karaoke'
         case 'payment:cash':
-            return 'Betalen met cash'
+            return 'Paying with cash allowed'
         case 'brewery':
-            return 'Heeft een brouwerij'
+            return 'Has a own brewery'
         default:
             return key
         }
