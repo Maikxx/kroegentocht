@@ -8,6 +8,7 @@ import { BeerAmount } from './BeerAmount/BeerAmount'
 import { Heading } from '../../Core/Text/Heading/Heading'
 import { Paragraph } from '../../Core/Text/Paragraph/Paragraph'
 import { Pub } from '../../../types/Pub'
+import { capitalize } from '../../../utils/string'
 
 interface Props {
     className?: string
@@ -102,7 +103,7 @@ export class CurrentPub extends React.Component<Props> {
         case 'brewery':
             return 'Has a own brewery'
         default:
-            return `${key[0].toUpperCase()}${key.slice(1)}`
+            return capitalize(key)
         }
     }
 
