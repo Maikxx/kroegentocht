@@ -14,12 +14,14 @@ interface Props {}
 interface State {
     beerProgress: number
     selectedPub?: Pub
+    clickState: string
 }
 
 export class RootView extends React.Component<Props, State> {
     public state: State = {
         beerProgress: 0,
         selectedPub: undefined,
+        clickState: '1',
     }
 
     private filteredPubs: Pub[]
@@ -34,12 +36,13 @@ export class RootView extends React.Component<Props, State> {
             this.setState({
                 beerProgress: this.state.beerProgress + 1,
                 selectedPub: this.filteredPubs[this.state.beerProgress + 1],
+                clickState: this.getNextImageState(),
             })
         })
     }
 
     public render() {
-        const { beerProgress, selectedPub } = this.state
+        const { beerProgress, selectedPub, clickState } = this.state
         const nextPubs = this.getNextPubs()
 
         return (
@@ -63,10 +66,33 @@ export class RootView extends React.Component<Props, State> {
                     <PubsMap
                         pubs={this.filteredPubs}
                         onSelectPub={this.onSelectPub}
+                        clickState={clickState}
                     />
                 </Section>
             </View>
         )
+    }
+
+    private getNextImageState = () => {
+        const { clickState } = this.state
+
+        if (clickState === '1') {
+            return '1s'
+        } else if (clickState === '1s') {
+            return '2'
+        } else if (clickState === '2') {
+            return '2s'
+        } else if (clickState === '2s') {
+            return '3'
+        } else if (clickState === '3') {
+            return '3s'
+        } else if (clickState === '3s') {
+            return '4'
+        } else if (clickState === '4') {
+            return '4s'
+        } else {
+            return '1'
+        }
     }
 
     private onSelectPub = (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => {

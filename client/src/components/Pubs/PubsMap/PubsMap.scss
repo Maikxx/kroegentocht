@@ -14,5 +14,17 @@
         right: 0;
         width: 100%;
         height: 100%;
+        opacity: 0;
+    }
+
+    &__1s--active.krt-Image,
+    &__1--active.krt-Image,
+    &__2s--active.krt-Image,
+    &__2--active.krt-Image,
+    &__3s--active.krt-Image,
+    &__3--active.krt-Image,
+    &__4s--active.krt-Image,
+    &__4--active.krt-Image {
+        opacity: 1;
     }
 }

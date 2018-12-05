@@ -647,11 +647,6 @@
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.6.tgz#dbe8a666156d556ed018e15a4c65f08937c3f628"
   integrity sha512-XHcYvVdbtAxVstjKxuULYqYaWIzHR15yr1pZj4fnGChuBVJlIAp9StJna0ZJNSgxPh4Nac2FL4JM3M11Tm6fqQ==
 
-"@types/gifffer@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@types/gifffer/-/gifffer-1.5.1.tgz#f3a0efd6a29512e213bf2e2b6bb3553e421679b8"
-  integrity sha512-iXAcss5u3t6hYGbmwQ6cOzO9c2D/Bp0hUGGZFt92/GwHCMSg0quDrp0zavwoW1MAp3bDeaf/lyo/feOQCUKtXA==
-
 "@types/node@^10.11.7":
   version "10.12.12"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.12.tgz#e15a9d034d9210f00320ef718a50c4a799417c47"
@@ -2780,11 +2775,6 @@ get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
-
-gifffer@^1.5.3:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/gifffer/-/gifffer-1.5.3.tgz#c32ce6f637e3af8f0b542b6ec104ad8c05edced7"
-  integrity sha512-1dSmcPVoCQJ5+S4MrIMWtv63cENvdtEMvAEpXotENnppJXFdhXZuU9F5CSUEdyaXOhRbuLzUkSZhLnn6Adn5pw==
 
 glob-parent@^3.1.0:
   version "3.1.0"
