@@ -5,6 +5,11 @@
     color: $color-white;
     min-height: 100vh;
 
+    > .krt-View {
+        padding: 0;
+        min-height: unset;
+    }
+
     > .krt-Section + .krt-Section {
         margin-top: 24px;
         height: 450px;
