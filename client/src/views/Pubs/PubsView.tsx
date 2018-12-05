@@ -16,51 +16,53 @@ interface Props {}
 interface State {
     beerProgress: number
     selectedPub?: Pub
-    clickState: string
+    currentImageIdentifier: string
 }
 
 export class PubsView extends React.Component<Props, State> {
     public state: State = {
         beerProgress: 0,
         selectedPub: undefined,
-        clickState: '1s',
+        currentImageIdentifier: '1s',
     }
 
     private filteredPubs: Pub[]
     private selectedPubIds = [ 'n2725878434', 'n1724352586', 'n1741897815', 'n1083668064', 'n1221258124' ]
 
     public render() {
-        const { beerProgress, selectedPub, clickState } = this.state
+        const { beerProgress, selectedPub, currentImageIdentifier } = this.state
         const nextPubs = this.getNextPubs()
         this.filteredPubs = this.selectedPubIds.map(pubId => pubs.find(pub => pub.full_id === pubId))
 
         return (
             <View>
                 <Section>
-                    <Column title={`Huidige kroeg`}>
+                    <Column title={`Current pub`}>
                         {selectedPub && (
                             <CurrentPub pub={selectedPub} />
                         )}
                         {!selectedPub && (
                             <Paragraph>
-                                Selecteer een kroeg om te beginnen!
+                                Select a pub to start!
                             </Paragraph>
                         )}
                     </Column>
                     <Column>
-                        <Column title={`Voortgang`}>
+                        <Column title={`Beer progress`}>
                             <BeerProgress progress={beerProgress} />
                         </Column>
-                        <Column title={`Volgende kroegen`}>
-                            {beerProgress !== 20 && <NextPubsList nextPubs={nextPubs}/>}
+                        <Column title={`Next pubs`}>
+                            {beerProgress !== 20 && (
+                                <NextPubsList nextPubs={nextPubs}/>
+                            )}
                             {beerProgress === 20 && (
                                 <Paragraph>
-                                    Je bent aan het eind gekomen van de kroegentocht!
+                                    You have come to the end of the pub crawl!
                                     <Link
                                         onClick={() => window.location.reload()}
                                         target={`_self`}
                                     >
-                                        Klik hier om opnieuw te beginnen.
+                                        Click here to start over.
                                     </Link>
                                 </Paragraph>
                             )}
@@ -71,7 +73,7 @@ export class PubsView extends React.Component<Props, State> {
                     <PubsMap
                         pubs={this.filteredPubs}
                         onSelectPub={this.onSelectPub}
-                        clickState={clickState}
+                        currentImageIdentifier={currentImageIdentifier}
                         nextPubId={this.getNextPubId()}
                     />
                 </Section>
@@ -81,26 +83,26 @@ export class PubsView extends React.Component<Props, State> {
 
     private getNextPubId = () => {
         const { selectedPub } = this.state
-        const { filteredPubs } = this
 
-        const nextPub = filteredPubs[filteredPubs.indexOf(selectedPub) + 1] || undefined
+        const nextPub = this.filteredPubs[this.filteredPubs.indexOf(selectedPub) + 1] || undefined
         return nextPub && nextPub.full_id
     }
 
     private getNextImageState = () => {
-        const { clickState } = this.state
+        const { currentImageIdentifier } = this.state
 
-        if (clickState === '1s') {
+        switch (currentImageIdentifier) {
+        case '1s':
             return '1'
-        } else if (clickState === '1') {
+        case '1':
             return '2'
-        } else if (clickState === '2') {
+        case '2':
             return '3'
-        } else if (clickState === '3') {
+        case '3':
             return '4'
-        } else if (clickState === '4') {
+        case '4':
             return '5'
-        } else {
+        default:
             return '5s'
         }
     }
@@ -109,15 +111,15 @@ export class PubsView extends React.Component<Props, State> {
         const { beerProgress } = this.state
 
         const newlySelectedPub = this.filteredPubs.find(pub => pub.full_id === pubId)
-        const nextClickState = this.getNextImageState()
-        const newBeerProgress = nextClickState !== '5s'
+        const nextcurrentImageIdentifier = this.getNextImageState()
+        const newBeerProgress = nextcurrentImageIdentifier !== '5s'
             ? (beerProgress + Number(newlySelectedPub.beerAmount))
             : beerProgress
 
         this.setState({
             selectedPub: newlySelectedPub,
             beerProgress: newBeerProgress,
-            clickState: nextClickState,
+            currentImageIdentifier: nextcurrentImageIdentifier,
         })
     }
 

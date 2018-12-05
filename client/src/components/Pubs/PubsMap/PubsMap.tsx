@@ -14,15 +14,15 @@ import FifthStatic from './images/fifth_static.jpg'
 
 interface Props {
     className?: string
-    pubs?: Pub[]
-    onSelectPub: (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => void
-    clickState: string
+    currentImageIdentifier: string
     nextPubId?: string
+    onSelectPub: (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => void
+    pubs?: Pub[]
 }
 
 export class PubsMap extends React.Component<Props> {
     public render() {
-        const { pubs, onSelectPub, clickState, nextPubId } = this.props
+        const { pubs, onSelectPub, currentImageIdentifier, nextPubId } = this.props
 
         if (!pubs) {
             return null
@@ -38,15 +38,25 @@ export class PubsMap extends React.Component<Props> {
                         key={pub.full_id}
                     />
                 ))}
-                <Image className={`krt-PubsMap__1 ${clickState === '1' ? 'krt-PubsMap__1--active' : ''}`} src={FirstGif}/>
-                <Image className={`krt-PubsMap__1s ${clickState === '1s' ? 'krt-PubsMap__1s--active' : ''}`} src={FirstStatic}/>
-                <Image className={`krt-PubsMap__2 ${clickState === '2' ? 'krt-PubsMap__2--active' : ''}`} src={SecondGif}/>
-                <Image className={`krt-PubsMap__3 ${clickState === '3' ? 'krt-PubsMap__3--active' : ''}`} src={ThirdGif}/>
-                <Image className={`krt-PubsMap__4 ${clickState === '4' ? 'krt-PubsMap__4--active' : ''}`} src={FourthGif}/>
-                <Image className={`krt-PubsMap__5 ${clickState === '5' ? 'krt-PubsMap__5--active' : ''}`} src={FifthGif}/>
-                <Image className={`krt-PubsMap__5s ${clickState === '5s' ? 'krt-PubsMap__5s--active' : ''}`} src={FifthStatic}/>
+                <Image className={this.getImageClassName('1')} src={FirstGif}/>
+                <Image className={this.getImageClassName('1s')} src={FirstStatic}/>
+                <Image className={this.getImageClassName('2')} src={SecondGif}/>
+                <Image className={this.getImageClassName('3')} src={ThirdGif}/>
+                <Image className={this.getImageClassName('4')} src={FourthGif}/>
+                <Image className={this.getImageClassName('5')} src={FifthGif}/>
+                <Image className={this.getImageClassName('5s')} src={FifthStatic}/>
             </div>
         )
+    }
+
+    private getImageClassName = (identifier: string) => {
+        const { currentImageIdentifier } = this.props
+
+        const classNameBase = `krt-PubsMap__${identifier}`
+        const shouldHaveActiveClass = currentImageIdentifier === identifier
+        const modifierClassName = `${shouldHaveActiveClass ? `${classNameBase}--active` : ''}`
+
+        return `${classNameBase} ${modifierClassName}`
     }
 
     private getClassName = () => {

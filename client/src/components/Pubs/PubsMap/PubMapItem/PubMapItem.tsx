@@ -6,8 +6,8 @@ import { Pub } from '../../../../types/Pub'
 interface Props {
     className?: string
     nextPubId?: string
-    pub: Pub
     onSelectPub: (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => void
+    pub: Pub
 }
 
 export class PubMapItem extends React.Component<Props> {
