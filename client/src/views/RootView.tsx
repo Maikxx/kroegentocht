@@ -53,7 +53,7 @@ export class RootView extends React.Component<Props, State> {
                         <Column title={`Voortgang`}>
                             <BeerProgress progress={beerProgress} />
                         </Column>
-                        <Column title={`Volgende kroeg`}>
+                        <Column title={`Volgende kroegen`}>
                             <NextPubsList nextPubs={nextPubs}/>
                         </Column>
                     </Column>
