@@ -2,7 +2,10 @@
     @import '../../../styles/variables/colors';
 
     padding: 24px;
-    background-color: $color-secondary;
     color: $color-white;
     height: 100vh;
+
+    > .krt-Section + .krt-Section {
+        margin-top: 24px;
+    }
 }

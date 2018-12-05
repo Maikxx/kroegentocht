@@ -1,0 +1,12 @@
+.krt-PubsMap {
+    @import '../../../styles/variables/colors';
+
+    $map-width: 1448px;
+    $map-height: 1080px;
+
+    width: $map-width;
+    position: relative;
+    background-color: $color-orange;
+    height: $map-height;
+    border-radius: 4px;
+}

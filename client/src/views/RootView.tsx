@@ -6,7 +6,7 @@ import { PageTitle } from '../components/Chrome/PageTitle/PageTitle'
 import { CurrentPub } from '../components/Pubs/CurrentPub/CurrentPub'
 import { BeerProgress } from '../components/Pubs/BeerProgress/BeerProgress'
 import { NextPubsList } from '../components/Pubs/NextPubsList/NextPubsList'
-
+import { PubsMap } from '../components/Pubs/PubsMap/PubsMap'
 import pubs from '../../assets/data/barsAndPubs.json'
 
 interface Props {}
@@ -47,7 +47,7 @@ export class RootView extends React.Component<Props, State> {
                     </Column>
                 </Section>
                 <Section>
-                    Here goes the map
+                    <PubsMap />
                 </Section>
             </View>
         )
