@@ -8,10 +8,11 @@ import { BeerAmount } from './BeerAmount/BeerAmount'
 import { getArrayOfRandomNumbersWhichEqual } from '../../../utils/array'
 import { Heading } from '../../Core/Text/Heading/Heading'
 import { Paragraph } from '../../Core/Text/Paragraph/Paragraph'
+import { Pub } from '../../../types/Pub'
 
 interface Props {
     className?: string
-    pub?: any
+    pub?: Pub
 }
 
 export class CurrentPub extends React.Component<Props> {
