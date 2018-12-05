@@ -45,9 +45,18 @@ export class CurrentPub extends React.Component<Props> {
                         .filter(([ key, value ]) => desiredDataKeys.includes(key) && !!value)
                         .sort(([keyA], [keyB]) => keyA === 'name' ? -1 : 1)
                         .map(([ key, value ], i) => {
-                            const content = key === 'website'
-                                ? <Link to={value}>{value}</Link>
-                                : value
+                            const websiteContent = key === 'website' && (
+                                <Link to={value}>
+                                    {value}
+                                </Link>
+                            )
+                            const telephoneContent = key === 'phone' && (
+                                <Link phone={value}>
+                                    {value}
+                                </Link>
+                            )
+
+                            const content = websiteContent || telephoneContent || value
 
                             return (
                                 <ListItem key={i}>
