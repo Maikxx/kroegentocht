@@ -35,7 +35,7 @@ export class PubsView extends React.Component<Props, State> {
         this.filteredPubs = this.selectedPubIds.map(pubId => pubs.find(pub => pub.full_id === pubId))
 
         return (
-            <View>
+            <View hiddenPageTitle={`Pub Crawl`}>
                 <Section>
                     <Column title={`Current pub`}>
                         {selectedPub && (
