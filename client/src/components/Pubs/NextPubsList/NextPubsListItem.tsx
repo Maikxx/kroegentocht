@@ -39,7 +39,7 @@ export class NextPubsListItem extends React.Component<Props> {
         )
     }
 
-    private getDistanceToNextPub = () => {
+    private getDistanceToNextPub = (): string | void => {
         const { pub, selectedRootId } = this.props
         const { name } = pub
 

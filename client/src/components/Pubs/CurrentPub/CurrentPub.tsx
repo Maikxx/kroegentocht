@@ -85,13 +85,13 @@ export class CurrentPub extends React.Component<Props> {
         )
     }
 
-    private getFullAddress = () => {
+    private getFullAddress = (): string => {
         const { pub } = this.props
 
         return `${pub['addr:street']} ${pub['addr:housenumber']}, ${pub['addr:postcode']}, the Netherlands`
     }
 
-    private getTransformedKeyName = (key: string) => {
+    private getTransformedKeyName = (key: string): string => {
         switch (key) {
         case 'opening_hours':
             return 'Opening hours'

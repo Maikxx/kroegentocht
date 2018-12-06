@@ -70,7 +70,7 @@ export class PubsMap extends React.Component<Props, State> {
         )
     }
 
-    private onSelectPub = (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => {
+    private onSelectPub = (event: React.MouseEvent<HTMLButtonElement>, pubId: string): void => {
         const { onSelectPub } = this.props
 
         this.setState({ defaultActive: false })
@@ -78,12 +78,13 @@ export class PubsMap extends React.Component<Props, State> {
         onSelectPub(event, pubId)
     }
 
-    private getImageClassName = (identifier: string) => {
+    private getImageClassName = (identifier: string): string => {
         const { currentImageIdentifier } = this.props
 
         const classNameBase = `krt-PubsMap__${identifier}`
-        const shouldHaveActiveClass = currentImageIdentifier === identifier
-        const modifierClassName = `${shouldHaveActiveClass ? `${classNameBase}--active` : ''}`
+        const modifierClassName = currentImageIdentifier === identifier
+            ? `${classNameBase}--active`
+            : ''
 
         return `${classNameBase} ${modifierClassName}`
     }
