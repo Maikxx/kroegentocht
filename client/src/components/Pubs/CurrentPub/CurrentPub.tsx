@@ -16,41 +16,42 @@ interface Props {
 }
 
 export class CurrentPub extends React.Component<Props> {
+    private desiredDataKeys = [
+        'name',
+        'cuisine',
+        'opening_hours',
+        'phone',
+        'website',
+        'smoking',
+        'description',
+        'wheelchair',
+        'darkroom',
+        'atm',
+        'karaoke',
+        'payment:cash',
+        'brewery',
+    ]
+
     public render() {
         const { pub } = this.props
-
-        const properties = Object.entries(pub) || []
-        const fullAddress = `${pub['addr:street']} ${pub['addr:housenumber']}, ${pub['addr:postcode']}, the Netherlands`
         const { beerAmount } = pub
-        const desiredDataKeys = [
-            'name',
-            'cuisine',
-            'opening_hours',
-            'phone',
-            'website',
-            'smoking',
-            'description',
-            'wheelchair',
-            'darkroom',
-            'atm',
-            'karaoke',
-            'payment:cash',
-            'brewery',
-        ]
+        const properties = Object.entries(pub) || []
+        const fullAddress = this.getFullAddress()
 
         return (
             <div className={this.getClassName()}>
                 <BeerAmount amount={Number(beerAmount)}/>
                 <List>
                     {properties
-                        .filter(([ key, value ]) => desiredDataKeys.includes(key) && !!value)
-                        .sort(([keyA], [keyB]) => keyA === 'name' ? -1 : 1)
+                        .filter(([ key, value ]) => this.desiredDataKeys.includes(key) && !!value)
+                        .sort(([keyA]) => keyA === 'name' ? -1 : 1)
                         .map(([ key, value ], i) => {
                             const websiteContent = key === 'website' && (
                                 <Link to={value}>
                                     {value}
                                 </Link>
                             )
+
                             const telephoneContent = key === 'phone' && (
                                 <Link phone={value}>
                                     {value}
@@ -82,6 +83,12 @@ export class CurrentPub extends React.Component<Props> {
                 </List>
             </div>
         )
+    }
+
+    private getFullAddress = () => {
+        const { pub } = this.props
+
+        return `${pub['addr:street']} ${pub['addr:housenumber']}, ${pub['addr:postcode']}, the Netherlands`
     }
 
     private getTransformedKeyName = (key: string) => {

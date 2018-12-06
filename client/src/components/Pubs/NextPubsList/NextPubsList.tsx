@@ -17,16 +17,18 @@ export class NextPubsList extends React.Component<Props> {
 
         return (
             <List className={this.getClassName()}>
-                {nextPubs && nextPubs.map(nextPub => (
-                    <NextPubsListItem
-                        key={nextPub.full_id}
-                        pub={nextPub}
-                        selectedRootId={selectedRootId}
-                    />
-                ))}
+                {nextPubs && this.renderListItems(nextPubs, selectedRootId)}
             </List>
         )
     }
+
+    private renderListItems = (nextPubs: Pub[], selectedRootId: string) => nextPubs.map(nextPub => (
+        <NextPubsListItem
+            key={nextPub.full_id}
+            pub={nextPub}
+            selectedRootId={selectedRootId}
+        />
+    ))
 
     private getClassName = () => {
         const { className } = this.props

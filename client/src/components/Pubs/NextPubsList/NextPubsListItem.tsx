@@ -41,8 +41,6 @@ export class NextPubsListItem extends React.Component<Props> {
         const { pub, selectedRootId } = this.props
         const { name } = pub
 
-        console.log(name)
-
         if (name === 'Gollem') {
             return selectedRootId === 'n2725878434'
                 ? '250 meter'
