@@ -108,7 +108,15 @@ export class PubsView extends React.Component<Props, State> {
                 return '(200 meter)'
             }
         } else {
-            return '(500 meter)'
+            if (nextPubs.length === 4) {
+                return '(2200 meter)'
+            } else if (nextPubs.length === 3) {
+                return '(2000 meter)'
+            } else if (nextPubs.length === 2) {
+                return '(1300 meter)'
+            } else if (nextPubs.length === 1) {
+                return '(500 meter)'
+            }
         }
     }
 
