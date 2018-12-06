@@ -36,7 +36,8 @@
     }
 
     &--is-clickable {
-        background-color: lighten($color-dark-purple, 15);
+        background-color: lighten($color-dark-purple, 25);
+        border: 1px solid $color-dark-purple;
         cursor: pointer;
 
         &:hover {
