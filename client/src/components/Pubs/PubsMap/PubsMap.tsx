@@ -13,6 +13,9 @@ import FifthGif from './images/fifth.gif'
 import FifthStatic from './images/fifth_static.jpg'
 import RouteTwoFirstGif from './images/r2_first.gif'
 import RouteTwoSecondGif from './images/r2_second.gif'
+import RouteTwoThirdGif from './images/r2_third.gif'
+import RouteTwoFourthGif from './images/r2_fourth.gif'
+import RouteTwoFifthGif from './images/r2_fifth.gif'
 
 interface Props {
     className?: string
@@ -60,6 +63,9 @@ export class PubsMap extends React.Component<Props, State> {
                 <Image className={this.getImageClassName('5s')} src={FifthStatic}/>
                 <Image className={this.getImageClassName('r1')} src={RouteTwoFirstGif}/>
                 <Image className={this.getImageClassName('r2')} src={RouteTwoSecondGif}/>
+                <Image className={this.getImageClassName('r3')} src={RouteTwoThirdGif}/>
+                <Image className={this.getImageClassName('r4')} src={RouteTwoFourthGif}/>
+                <Image className={this.getImageClassName('r5')} src={RouteTwoFifthGif}/>
             </div>
         )
     }

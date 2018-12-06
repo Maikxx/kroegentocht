@@ -30,6 +30,7 @@ export class PubsView extends React.Component<Props, State> {
 
     private filteredPubs: Pub[]
     private selectedPubIds = [ 'n2725878434', 'n1724352586', 'n1741897815', 'n1083668064', 'n1221258124' ]
+    private selectedPubRouteTwoIds = [ 'n1083668064', 'n1221258124', 'n1724352586', 'n1741897815', 'n2725878434' ]
     private startingPoints = [ 'n2725878434', 'n1083668064' ]
 
     public render() {
@@ -86,28 +87,48 @@ export class PubsView extends React.Component<Props, State> {
     }
 
     private getRemainingDistance = () => {
+        const { selectedRootId } = this.state
         const nextPubs = this.getNextPubs()
 
-        if (!nextPubs || !nextPubs.length) {
+        if (!nextPubs || !nextPubs.length || !selectedRootId || !selectedRootId.length) {
             return ''
         }
 
-        if (nextPubs.length === 4) {
-            return '(1550 meter)'
-        } else if (nextPubs.length === 3) {
-            return '(1300 meter)'
-        } else if (nextPubs.length === 2) {
-            return '(700 meter)'
-        } else if (nextPubs.length === 1) {
-            return '(200 meter)'
+        if (selectedRootId === 'n2725878434') {
+            if (nextPubs.length === 4) {
+                return '(1550 meter)'
+            } else if (nextPubs.length === 3) {
+                return '(1300 meter)'
+            } else if (nextPubs.length === 2) {
+                return '(700 meter)'
+            } else if (nextPubs.length === 1) {
+                return '(200 meter)'
+            }
+        } else {
+            return '(500 meter)'
         }
     }
 
     private getNextPubId = () => {
-        const { selectedPub } = this.state
+        const { selectedPub, selectedRootId } = this.state
 
-        const nextPub = this.filteredPubs[this.filteredPubs.indexOf(selectedPub) + 1] || undefined
-        return nextPub && nextPub.full_id
+        if (!selectedRootId || !selectedRootId.length) {
+            return null
+        }
+
+        if (selectedRootId === 'n2725878434') {
+            const nextPub = this.filteredPubs[this.filteredPubs.indexOf(selectedPub) + 1] || undefined
+            return nextPub && nextPub.full_id
+        } else {
+            const id = selectedPub && selectedPub.full_id
+
+            if (!id) {
+                return undefined
+            }
+
+            const nextPub = this.selectedPubRouteTwoIds[this.selectedPubRouteTwoIds.indexOf(id) + 1] || undefined
+            return nextPub
+        }
     }
 
     private onSelectPub = (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => {
@@ -162,8 +183,14 @@ export class PubsView extends React.Component<Props, State> {
                 return 'r1'
             case 'r1':
                 return 'r2'
+            case 'r2':
+                return 'r3'
+            case 'r3':
+                return 'r4'
+            case 'r4':
+                return 'r5'
             default:
-                return '5s'
+                return 'r5s'
             }
         }
     }
