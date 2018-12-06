@@ -89,7 +89,7 @@ export class PubsView extends React.Component<Props, State> {
         )
     }
 
-    private getRemainingDistance = () => {
+    private getRemainingDistance = (): string | void => {
         const { selectedRootId } = this.state
         const nextPubs = this.getNextPubs()
 
@@ -97,30 +97,28 @@ export class PubsView extends React.Component<Props, State> {
             return ''
         }
 
-        if (selectedRootId === this.startingPoints[0]) {
-            if (nextPubs.length === 4) {
-                return '(1550 meter)'
-            } else if (nextPubs.length === 3) {
-                return '(1300 meter)'
-            } else if (nextPubs.length === 2) {
-                return '(700 meter)'
-            } else if (nextPubs.length === 1) {
-                return '(200 meter)'
-            }
-        } else {
-            if (nextPubs.length === 4) {
-                return '(2200 meter)'
-            } else if (nextPubs.length === 3) {
-                return '(2000 meter)'
-            } else if (nextPubs.length === 2) {
-                return '(1300 meter)'
-            } else if (nextPubs.length === 1) {
-                return '(500 meter)'
-            }
+        const isAlternateRoute = selectedRootId !== this.startingPoints[0]
+
+        if (nextPubs.length === 4) {
+            return isAlternateRoute
+                ? '(2200 meter)'
+                : '(1550 meter)'
+        } else if (nextPubs.length === 3) {
+            return isAlternateRoute
+                ? '(2000 meter)'
+                : '(1300 meter)'
+        } else if (nextPubs.length === 2) {
+            return isAlternateRoute
+                ? '(1300 meter)'
+                : '(700 meter)'
+        } else if (nextPubs.length === 1) {
+            return isAlternateRoute
+                ? '(500 meter)'
+                : '(200 meter)'
         }
     }
 
-    private getNextPubId = () => {
+    private getNextPubId = (): string | null => {
         const { selectedPub, selectedRootId } = this.state
 
         if (!selectedRootId || !selectedRootId.length) {
@@ -134,7 +132,7 @@ export class PubsView extends React.Component<Props, State> {
             const id = selectedPub && selectedPub.full_id
 
             if (!id) {
-                return undefined
+                return null
             }
 
             const nextPub = this.routeTwoIds[this.routeTwoIds.indexOf(id) + 1]
@@ -173,29 +171,29 @@ export class PubsView extends React.Component<Props, State> {
     private getNextImageState = (): string => {
         const { currentImageIdentifier } = this.state
 
+        const getNextImageIdentifier = (state: string): string => {
+            const { selectedRootId } = this.state
+            const isAlternateRoute = selectedRootId !== this.startingPoints[0]
+
+            return isAlternateRoute
+                ? `r${state}`
+                : state
+        }
+
         switch (currentImageIdentifier) {
         case '1s':
-            return this.getNextImageIdentifier('1')
-        case this.getNextImageIdentifier('1'):
-            return this.getNextImageIdentifier('2')
-        case this.getNextImageIdentifier('2'):
-            return this.getNextImageIdentifier('3')
-        case this.getNextImageIdentifier('3'):
-            return this.getNextImageIdentifier('4')
-        case this.getNextImageIdentifier('4'):
-            return this.getNextImageIdentifier('5')
+            return getNextImageIdentifier('1')
+        case getNextImageIdentifier('1'):
+            return getNextImageIdentifier('2')
+        case getNextImageIdentifier('2'):
+            return getNextImageIdentifier('3')
+        case getNextImageIdentifier('3'):
+            return getNextImageIdentifier('4')
+        case getNextImageIdentifier('4'):
+            return getNextImageIdentifier('5')
         default:
-            return this.getNextImageIdentifier('5s')
+            return getNextImageIdentifier('5s')
         }
-    }
-
-    private getNextImageIdentifier = (state: string): string => {
-        const { selectedRootId } = this.state
-        const isAlternateRoute = selectedRootId !== this.startingPoints[0]
-
-        return isAlternateRoute
-            ? `r${state}`
-            : state
     }
 
     private getNextPubs = (): Pub[] => {
