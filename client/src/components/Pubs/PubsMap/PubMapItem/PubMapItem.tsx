@@ -5,9 +5,9 @@ import { Pub } from '../../../../types/Pub'
 
 interface Props {
     className?: string
+    defaultSelected?: string[]
     nextPubId?: string
     onSelectPub: (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => void
-    defaultSelected?: string[]
     pub: Pub
 }
 
