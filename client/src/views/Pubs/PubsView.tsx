@@ -128,7 +128,7 @@ export class PubsView extends React.Component<Props, State> {
         }
 
         if (selectedRootId === this.startingPoints[0]) {
-            const nextPub = this.filteredPubs[this.filteredPubs.indexOf(selectedPub) + 1] || undefined
+            const nextPub = this.filteredPubs[this.filteredPubs.indexOf(selectedPub) + 1]
             return nextPub && nextPub.full_id
         } else {
             const id = selectedPub && selectedPub.full_id
@@ -137,7 +137,7 @@ export class PubsView extends React.Component<Props, State> {
                 return undefined
             }
 
-            const nextPub = this.routeTwoIds[this.routeTwoIds.indexOf(id) + 1] || undefined
+            const nextPub = this.routeTwoIds[this.routeTwoIds.indexOf(id) + 1]
             return nextPub
         }
     }
