@@ -192,7 +192,7 @@ export class PubsView extends React.Component<Props, State> {
         case getNextImageIdentifier('4'):
             return getNextImageIdentifier('5')
         default:
-            return getNextImageIdentifier('5s')
+            return null
         }
     }
 

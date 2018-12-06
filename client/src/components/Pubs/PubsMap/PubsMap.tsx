@@ -10,7 +10,6 @@ import SecondGif from './images/second.gif'
 import ThirdGif from './images/third.gif'
 import FourthGif from './images/fourth.gif'
 import FifthGif from './images/fifth.gif'
-import FifthStatic from './images/fifth_static.jpg'
 import RouteTwoFirstGif from './images/r2_first.gif'
 import RouteTwoSecondGif from './images/r2_second.gif'
 import RouteTwoThirdGif from './images/r2_third.gif'
@@ -60,7 +59,6 @@ export class PubsMap extends React.Component<Props, State> {
                 <Image className={this.getImageClassName('3')} src={ThirdGif}/>
                 <Image className={this.getImageClassName('4')} src={FourthGif}/>
                 <Image className={this.getImageClassName('5')} src={FifthGif}/>
-                <Image className={this.getImageClassName('5s')} src={FifthStatic}/>
                 <Image className={this.getImageClassName('r1')} src={RouteTwoFirstGif}/>
                 <Image className={this.getImageClassName('r2')} src={RouteTwoSecondGif}/>
                 <Image className={this.getImageClassName('r3')} src={RouteTwoThirdGif}/>
