@@ -142,7 +142,7 @@ export class PubsView extends React.Component<Props, State> {
         }
     }
 
-    private onSelectPub = (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => {
+    private onSelectPub = (event: React.MouseEvent<HTMLButtonElement>, pubId: string): void | null => {
         const { selectedRootId } = this.state
 
         const newlySelectedPub = this.filteredPubs.find(pub => pub.full_id === pubId)
@@ -155,7 +155,7 @@ export class PubsView extends React.Component<Props, State> {
         this.setNewState(newlySelectedPub)
     }
 
-    private setNewState = (newlySelectedPub: Pub) => {
+    private setNewState = (newlySelectedPub: Pub): void => {
         const { beerProgress } = this.state
 
         const nextImageIdentifier = this.getNextImageState()
@@ -170,7 +170,7 @@ export class PubsView extends React.Component<Props, State> {
         })
     }
 
-    private getNextImageState = () => {
+    private getNextImageState = (): string => {
         const { currentImageIdentifier } = this.state
 
         switch (currentImageIdentifier) {
