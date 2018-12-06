@@ -17,6 +17,8 @@ interface Props {
 }
 
 export class NextPubsListItem extends React.Component<Props> {
+    private regularStartingPoint = 'n2725878434'
+
     public render() {
         const { pub } = this.props
 
@@ -42,15 +44,15 @@ export class NextPubsListItem extends React.Component<Props> {
         const { name } = pub
 
         if (name === 'Gollem') {
-            return selectedRootId === 'n2725878434'
+            return selectedRootId === this.regularStartingPoint
                 ? '250 meter'
                 : '700 meter'
         } else if (name === 'Hunter\'s Grand Café') {
-            return selectedRootId === 'n2725878434'
+            return selectedRootId === this.regularStartingPoint
                 ? '600 meter'
                 : '800 meter'
         } else if (name === 'Café de Doelen') {
-            return selectedRootId === 'n2725878434'
+            return selectedRootId === this.regularStartingPoint
                 ? '500 meter'
                 : '200 meter'
         } else if (name === 'Café Katoen') {
