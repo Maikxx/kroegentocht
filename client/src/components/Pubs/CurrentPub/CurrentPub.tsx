@@ -20,7 +20,7 @@ export class CurrentPub extends React.Component<Props> {
         const { pub } = this.props
 
         const properties = Object.entries(pub) || []
-        const fullAddress = `${pub['addr:street']} ${pub['addr:housenumber']}, ${pub['addr:postcode']}, Nederland`
+        const fullAddress = `${pub['addr:street']} ${pub['addr:housenumber']}, ${pub['addr:postcode']}, the Netherlands`
         const { beerAmount } = pub
         const desiredDataKeys = [
             'name',
