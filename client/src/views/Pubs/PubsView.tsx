@@ -52,7 +52,7 @@ export class PubsView extends React.Component<Props, State> {
                         )}
                     </Column>
                     <Column>
-                        <Column title={`Beer progress`}>
+                        <Column title={`Amount of beers`}>
                             <BeerProgress progress={beerProgress} />
                         </Column>
                         <Column title={`Next pubs ${this.getRemainingDistance()}`}>
