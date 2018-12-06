@@ -11,18 +11,30 @@ import ThirdGif from './images/third.gif'
 import FourthGif from './images/fourth.gif'
 import FifthGif from './images/fifth.gif'
 import FifthStatic from './images/fifth_static.jpg'
+import RouteTwoFirstGif from './images/r2_first.gif'
+import RouteTwoSecondGif from './images/r2_second.gif'
 
 interface Props {
     className?: string
     currentImageIdentifier: string
+    defaultSelected?: string[]
     nextPubId?: string
     onSelectPub: (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => void
     pubs?: Pub[]
 }
 
-export class PubsMap extends React.Component<Props> {
+interface State {
+    defaultActive: boolean
+}
+
+export class PubsMap extends React.Component<Props, State> {
+    public state: State = {
+        defaultActive: true,
+    }
+
     public render() {
-        const { pubs, onSelectPub, currentImageIdentifier, nextPubId } = this.props
+        const { pubs, nextPubId, defaultSelected } = this.props
+        const { defaultActive } = this.state
 
         if (!pubs) {
             return null
@@ -34,7 +46,8 @@ export class PubsMap extends React.Component<Props> {
                     <PubMapItem
                         pub={pub}
                         nextPubId={nextPubId}
-                        onSelectPub={onSelectPub}
+                        onSelectPub={this.onSelectPub}
+                        defaultSelected={defaultActive && defaultSelected}
                         key={pub.full_id}
                     />
                 ))}
@@ -45,8 +58,18 @@ export class PubsMap extends React.Component<Props> {
                 <Image className={this.getImageClassName('4')} src={FourthGif}/>
                 <Image className={this.getImageClassName('5')} src={FifthGif}/>
                 <Image className={this.getImageClassName('5s')} src={FifthStatic}/>
+                <Image className={this.getImageClassName('r1')} src={RouteTwoFirstGif}/>
+                <Image className={this.getImageClassName('r2')} src={RouteTwoSecondGif}/>
             </div>
         )
+    }
+
+    private onSelectPub = (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => {
+        const { onSelectPub } = this.props
+
+        this.setState({ defaultActive: false })
+
+        onSelectPub(event, pubId)
     }
 
     private getImageClassName = (identifier: string) => {

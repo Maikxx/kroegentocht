@@ -7,14 +7,15 @@ interface Props {
     className?: string
     nextPubId?: string
     onSelectPub: (event: React.MouseEvent<HTMLButtonElement>, pubId: string) => void
+    defaultSelected?: string[]
     pub: Pub
 }
 
 export class PubMapItem extends React.Component<Props> {
     public render() {
-        const { pub, onSelectPub, nextPubId } = this.props
+        const { pub, onSelectPub, defaultSelected, nextPubId } = this.props
         const { full_id } = pub
-        const isClickable = nextPubId === full_id
+        const isClickable = nextPubId === full_id || (defaultSelected && defaultSelected.includes(full_id))
 
         return (
             <button
@@ -25,12 +26,12 @@ export class PubMapItem extends React.Component<Props> {
     }
 
     private getClassName = () => {
-        const { className, pub, nextPubId } = this.props
+        const { className, pub, nextPubId, defaultSelected } = this.props
         const { full_id } = pub
 
         return c('krt-PubMapItem', {
             [`krt-PubMapItem--${full_id}`]: true,
-            'krt-PubMapItem--is-clickable': nextPubId === full_id,
+            'krt-PubMapItem--is-clickable': nextPubId === full_id || (defaultSelected && defaultSelected.includes(full_id)),
         }, className)
     }
 }
