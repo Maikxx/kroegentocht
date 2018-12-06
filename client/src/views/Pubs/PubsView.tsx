@@ -199,14 +199,22 @@ export class PubsView extends React.Component<Props, State> {
     }
 
     private getNextPubs = () => {
-        const { selectedPub } = this.state
-        const { filteredPubs } = this
+        const { selectedPub, selectedRootId } = this.state
+        const { filteredPubs, selectedPubRouteTwoIds } = this
 
         if (!filteredPubs || !selectedPub) {
             return null
         }
 
-        const currentPubIndex = filteredPubs.indexOf(selectedPub)
-        return filteredPubs.slice(currentPubIndex + 1)
+        let currentPubIndex
+        if (selectedRootId === 'n2725878434') {
+            currentPubIndex = filteredPubs.indexOf(selectedPub)
+            return filteredPubs.slice(currentPubIndex + 1)
+        } else {
+            currentPubIndex = selectedPubRouteTwoIds.indexOf(selectedPub.full_id)
+            return selectedPubRouteTwoIds
+                .slice(currentPubIndex + 1)
+                .map(pubId => filteredPubs.find(pub => pub.full_id === pubId))
+        }
     }
 }
