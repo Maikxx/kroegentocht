@@ -30,7 +30,7 @@ export class PubsView extends React.Component<Props, State> {
 
     private filteredPubs: Pub[]
     private selectedPubIds = [ 'n2725878434', 'n1724352586', 'n1741897815', 'n1083668064', 'n1221258124' ]
-    private selectedPubRouteTwoIds = [ 'n1083668064', 'n1221258124', 'n1724352586', 'n1741897815', 'n2725878434' ]
+    private routeTwoIds = [ 'n1083668064', 'n1221258124', 'n1724352586', 'n1741897815', 'n2725878434' ]
     private startingPoints = [ 'n2725878434', 'n1083668064' ]
 
     public render() {
@@ -137,7 +137,7 @@ export class PubsView extends React.Component<Props, State> {
                 return undefined
             }
 
-            const nextPub = this.selectedPubRouteTwoIds[this.selectedPubRouteTwoIds.indexOf(id) + 1] || undefined
+            const nextPub = this.routeTwoIds[this.routeTwoIds.indexOf(id) + 1] || undefined
             return nextPub
         }
     }
@@ -208,7 +208,7 @@ export class PubsView extends React.Component<Props, State> {
 
     private getNextPubs = () => {
         const { selectedPub, selectedRootId } = this.state
-        const { filteredPubs, selectedPubRouteTwoIds } = this
+        const { filteredPubs, routeTwoIds } = this
 
         if (!filteredPubs || !selectedPub) {
             return null
@@ -219,8 +219,8 @@ export class PubsView extends React.Component<Props, State> {
             currentPubIndex = filteredPubs.indexOf(selectedPub)
             return filteredPubs.slice(currentPubIndex + 1)
         } else {
-            currentPubIndex = selectedPubRouteTwoIds.indexOf(selectedPub.full_id)
-            return selectedPubRouteTwoIds
+            currentPubIndex = routeTwoIds.indexOf(selectedPub.full_id)
+            return routeTwoIds
                 .slice(currentPubIndex + 1)
                 .map(pubId => filteredPubs.find(pub => pub.full_id === pubId))
         }
