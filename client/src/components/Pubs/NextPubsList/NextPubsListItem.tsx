@@ -28,12 +28,27 @@ export class NextPubsListItem extends React.Component<Props> {
                             {pub.name}
                         </Heading>
                         <Paragraph>
-                            {pub['addr:street']}
+                            {pub['addr:street']} ({this.getDistanceToNextPub()})
                         </Paragraph>
                     </Column>
                 </Row>
             </ListItem>
         )
+    }
+
+    private getDistanceToNextPub = () => {
+        const { pub } = this.props
+        const { name } = pub
+
+        if (name === 'Gollem') {
+            return '250 meter'
+        } else if (name === 'Hunter\'s Grand Café') {
+            return '600 meter'
+        } else if (name === 'Café de Doelen') {
+            return '500 meter'
+        } else if (name === 'Café Katoen') {
+            return '200 meter'
+        }
     }
 
     private getClassName = () => {
