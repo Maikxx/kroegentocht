@@ -168,7 +168,7 @@ export class PubsView extends React.Component<Props, State> {
         })
     }
 
-    private getNextImageState = (): string => {
+    private getNextImageState = (): string | null => {
         const { currentImageIdentifier } = this.state
 
         const getNextImageIdentifier = (state: string): string => {
@@ -196,7 +196,7 @@ export class PubsView extends React.Component<Props, State> {
         }
     }
 
-    private getNextPubs = (): Pub[] => {
+    private getNextPubs = (): Pub[] | null => {
         const { selectedPub, selectedRootId } = this.state
 
         if (!this.filteredPubs || !selectedPub) {
