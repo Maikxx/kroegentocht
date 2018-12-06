@@ -51,7 +51,7 @@ export class PubsView extends React.Component<Props, State> {
                         <Column title={`Beer progress`}>
                             <BeerProgress progress={beerProgress} />
                         </Column>
-                        <Column title={`Next pubs`}>
+                        <Column title={`Next pubs ${this.getRemainingDistance()}`}>
                             {beerProgress !== 20 && (
                                 <NextPubsList nextPubs={nextPubs}/>
                             )}
@@ -79,6 +79,25 @@ export class PubsView extends React.Component<Props, State> {
                 </Section>
             </View>
         )
+    }
+
+    private getRemainingDistance = () => {
+        const nextPubs = this.getNextPubs()
+        console.log(nextPubs && nextPubs.length)
+
+        if (!nextPubs || !nextPubs.length) {
+            return ''
+        }
+
+        if (nextPubs.length === 4) {
+            return '(1550 meter)'
+        } else if (nextPubs.length === 3) {
+            return '(1300 meter)'
+        } else if (nextPubs.length === 2) {
+            return '(700 meter)'
+        } else if (nextPubs.length === 1) {
+            return '(200 meter)'
+        }
     }
 
     private getNextPubId = () => {
