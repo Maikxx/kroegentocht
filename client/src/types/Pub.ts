@@ -88,3 +88,11 @@ export interface Pub {
     'diet:vegetarian': string
     telephone: string
 }
+
+export enum PubName {
+    Gollem = 'Gollem',
+    HuntersGrand = 'Hunter\'s Grand Café',
+    DeDoelen = 'Café de Doelen',
+    Katoen = 'Café Katoen',
+    HuntersBar = 'Hunter\'s The Bar',
+}
