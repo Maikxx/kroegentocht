@@ -198,7 +198,7 @@ export class PubsView extends React.Component<Props, State> {
             : state
     }
 
-    private getNextPubs = () => {
+    private getNextPubs = (): Pub[] => {
         const { selectedPub, selectedRootId } = this.state
 
         if (!this.filteredPubs || !selectedPub) {
