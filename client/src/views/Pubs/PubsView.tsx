@@ -173,37 +173,29 @@ export class PubsView extends React.Component<Props, State> {
     private getNextImageState = () => {
         const { currentImageIdentifier, selectedRootId } = this.state
 
-        if (selectedRootId === this.startingPoints[0]) {
-            switch (currentImageIdentifier) {
-            case '1s':
-                return '1'
-            case '1':
-                return '2'
-            case '2':
-                return '3'
-            case '3':
-                return '4'
-            case '4':
-                return '5'
-            default:
-                return '5s'
-            }
-        } else {
-            switch (currentImageIdentifier) {
-            case '1s':
-                return 'r1'
-            case 'r1':
-                return 'r2'
-            case 'r2':
-                return 'r3'
-            case 'r3':
-                return 'r4'
-            case 'r4':
-                return 'r5'
-            default:
-                return 'r5s'
-            }
+        switch (currentImageIdentifier) {
+        case '1s':
+            return this.getNextImageIdentifier('1')
+        case this.getNextImageIdentifier('1'):
+            return this.getNextImageIdentifier('2')
+        case this.getNextImageIdentifier('2'):
+            return this.getNextImageIdentifier('3')
+        case this.getNextImageIdentifier('3'):
+            return this.getNextImageIdentifier('4')
+        case this.getNextImageIdentifier('4'):
+            return this.getNextImageIdentifier('5')
+        default:
+            return this.getNextImageIdentifier('5s')
         }
+    }
+
+    private getNextImageIdentifier = (state: string): string => {
+        const { selectedRootId } = this.state
+        const isAlternateRoute = selectedRootId !== this.startingPoints[0]
+
+        return isAlternateRoute
+            ? `r${state}`
+            : state
     }
 
     private getNextPubs = () => {
