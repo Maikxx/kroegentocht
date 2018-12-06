@@ -34,7 +34,7 @@ export class PubsView extends React.Component<Props, State> {
     private startingPoints = [ 'n2725878434', 'n1083668064' ]
 
     public render() {
-        const { beerProgress, selectedPub, currentImageIdentifier } = this.state
+        const { beerProgress, selectedPub, currentImageIdentifier, selectedRootId } = this.state
         const nextPubs = this.getNextPubs()
         this.filteredPubs = this.selectedPubIds.map(pubId => pubs.find(pub => pub.full_id === pubId))
 
@@ -57,7 +57,10 @@ export class PubsView extends React.Component<Props, State> {
                         </Column>
                         <Column title={`Next pubs ${this.getRemainingDistance()}`}>
                             {beerProgress !== 20 && (
-                                <NextPubsList nextPubs={nextPubs}/>
+                                <NextPubsList
+                                    nextPubs={nextPubs}
+                                    selectedRootId={selectedRootId}
+                                />
                             )}
                             {beerProgress === 20 && (
                                 <Paragraph>

@@ -13,6 +13,7 @@ import { Pub } from '../../../types/Pub'
 interface Props {
     className?: string
     pub: Pub
+    selectedRootId: string
 }
 
 export class NextPubsListItem extends React.Component<Props> {
@@ -37,17 +38,27 @@ export class NextPubsListItem extends React.Component<Props> {
     }
 
     private getDistanceToNextPub = () => {
-        const { pub } = this.props
+        const { pub, selectedRootId } = this.props
         const { name } = pub
 
+        console.log(name)
+
         if (name === 'Gollem') {
-            return '250 meter'
+            return selectedRootId === 'n2725878434'
+                ? '250 meter'
+                : '700 meter'
         } else if (name === 'Hunter\'s Grand Café') {
-            return '600 meter'
+            return selectedRootId === 'n2725878434'
+                ? '600 meter'
+                : '800 meter'
         } else if (name === 'Café de Doelen') {
-            return '500 meter'
+            return selectedRootId === 'n2725878434'
+                ? '500 meter'
+                : '200 meter'
         } else if (name === 'Café Katoen') {
             return '200 meter'
+        } else if (name === 'Hunter\'s The Bar') {
+            return '500 meter'
         }
     }
 

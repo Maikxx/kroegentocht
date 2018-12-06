@@ -8,11 +8,12 @@ import { Pub } from '../../../types/Pub'
 interface Props {
     className?: string
     nextPubs?: Pub[]
+    selectedRootId: string
 }
 
 export class NextPubsList extends React.Component<Props> {
     public render() {
-        const { nextPubs } = this.props
+        const { nextPubs, selectedRootId } = this.props
 
         return (
             <List className={this.getClassName()}>
@@ -20,6 +21,7 @@ export class NextPubsList extends React.Component<Props> {
                     <NextPubsListItem
                         key={nextPub.full_id}
                         pub={nextPub}
+                        selectedRootId={selectedRootId}
                     />
                 ))}
             </List>
