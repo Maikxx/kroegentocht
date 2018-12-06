@@ -97,7 +97,7 @@ export class PubsView extends React.Component<Props, State> {
             return ''
         }
 
-        if (selectedRootId === 'n2725878434') {
+        if (selectedRootId === this.startingPoints[0]) {
             if (nextPubs.length === 4) {
                 return '(1550 meter)'
             } else if (nextPubs.length === 3) {
@@ -127,7 +127,7 @@ export class PubsView extends React.Component<Props, State> {
             return null
         }
 
-        if (selectedRootId === 'n2725878434') {
+        if (selectedRootId === this.startingPoints[0]) {
             const nextPub = this.filteredPubs[this.filteredPubs.indexOf(selectedPub) + 1] || undefined
             return nextPub && nextPub.full_id
         } else {
@@ -173,7 +173,7 @@ export class PubsView extends React.Component<Props, State> {
     private getNextImageState = () => {
         const { currentImageIdentifier, selectedRootId } = this.state
 
-        if (selectedRootId === 'n2725878434') {
+        if (selectedRootId === this.startingPoints[0]) {
             switch (currentImageIdentifier) {
             case '1s':
                 return '1'
@@ -215,7 +215,7 @@ export class PubsView extends React.Component<Props, State> {
         }
 
         let currentPubIndex
-        if (selectedRootId === 'n2725878434') {
+        if (selectedRootId === this.startingPoints[0]) {
             currentPubIndex = filteredPubs.indexOf(selectedPub)
             return filteredPubs.slice(currentPubIndex + 1)
         } else {
