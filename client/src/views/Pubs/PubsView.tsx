@@ -171,7 +171,7 @@ export class PubsView extends React.Component<Props, State> {
     }
 
     private getNextImageState = () => {
-        const { currentImageIdentifier, selectedRootId } = this.state
+        const { currentImageIdentifier } = this.state
 
         switch (currentImageIdentifier) {
         case '1s':
@@ -200,21 +200,18 @@ export class PubsView extends React.Component<Props, State> {
 
     private getNextPubs = () => {
         const { selectedPub, selectedRootId } = this.state
-        const { filteredPubs, routeTwoIds } = this
 
-        if (!filteredPubs || !selectedPub) {
+        if (!this.filteredPubs || !selectedPub) {
             return null
         }
 
-        let currentPubIndex
         if (selectedRootId === this.startingPoints[0]) {
-            currentPubIndex = filteredPubs.indexOf(selectedPub)
-            return filteredPubs.slice(currentPubIndex + 1)
+            return this.filteredPubs
+                .slice(this.filteredPubs.indexOf(selectedPub) + 1)
         } else {
-            currentPubIndex = routeTwoIds.indexOf(selectedPub.full_id)
-            return routeTwoIds
-                .slice(currentPubIndex + 1)
-                .map(pubId => filteredPubs.find(pub => pub.full_id === pubId))
+            return this.routeTwoIds
+                .slice(this.routeTwoIds.indexOf(selectedPub.full_id) + 1)
+                .map(pubId => this.filteredPubs.find(pub => pub.full_id === pubId))
         }
     }
 }
