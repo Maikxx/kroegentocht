@@ -130,15 +130,15 @@ export class PubsView extends React.Component<Props, State> {
         const { beerProgress } = this.state
 
         const newlySelectedPub = this.filteredPubs.find(pub => pub.full_id === pubId)
-        const nextcurrentImageIdentifier = this.getNextImageState()
-        const newBeerProgress = nextcurrentImageIdentifier !== '5s'
+        const nextImageIdentifier = this.getNextImageState()
+        const newBeerProgress = nextImageIdentifier !== '5s'
             ? (beerProgress + Number(newlySelectedPub.beerAmount))
             : beerProgress
 
         this.setState({
             selectedPub: newlySelectedPub,
             beerProgress: newBeerProgress,
-            currentImageIdentifier: nextcurrentImageIdentifier,
+            currentImageIdentifier: nextImageIdentifier,
         })
     }
 
