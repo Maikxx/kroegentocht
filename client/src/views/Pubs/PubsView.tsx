@@ -83,7 +83,6 @@ export class PubsView extends React.Component<Props, State> {
 
     private getRemainingDistance = () => {
         const nextPubs = this.getNextPubs()
-        console.log(nextPubs && nextPubs.length)
 
         if (!nextPubs || !nextPubs.length) {
             return ''
