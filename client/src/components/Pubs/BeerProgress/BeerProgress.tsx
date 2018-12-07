@@ -3,6 +3,8 @@ import * as React from 'react'
 import c from 'classnames'
 import { times } from '../../../utils/array'
 import { BeerProgressIcon } from './BeerProgressIcon'
+import { Input } from '../../Core/DataEntry/Input/Input'
+import { Button } from '../../Core/Button/Button'
 
 interface Props {
     className?: string
@@ -26,17 +28,18 @@ export class BeerProgress extends React.Component<Props, State> {
             <div className={this.getClassName()}>
                 {!amountSet && (
                     <React.Fragment>
-                        <input
-                            type="number"
+                        <Input
                             className={`krt-BeerProgress__amount`}
+                            name={`beer-amount`}
+                            type={`number`}
                             value={20}
                         />
-                        <button
+                        <Button
                             onClick={() => this.setState({ amountSet: true })}
                             className={`krt-BeerProgress__set-button`}
                         >
                             Set amount of beers
-                        </button>
+                        </Button>
                     </React.Fragment>
                 )}
                 {amountSet && (
