@@ -63,7 +63,7 @@ export class PubsView extends React.Component<Props, State> {
                                 />
                             )}
                             {beerProgress === 20 && (
-                                <Paragraph>
+                                <Paragraph extraSpaceBottom={true}>
                                     You have come to the end of the pub crawl!
                                     <Link
                                         onClick={() => window.location.reload()}

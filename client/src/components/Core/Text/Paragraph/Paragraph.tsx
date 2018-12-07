@@ -4,6 +4,7 @@ import c from 'classnames'
 
 interface Props {
     className?: string
+    extraSpaceBottom?: boolean
 }
 
 export class Paragraph extends React.Component<Props> {
@@ -18,8 +19,10 @@ export class Paragraph extends React.Component<Props> {
     }
 
     private getClassName = () => {
-        const { className } = this.props
+        const { className, extraSpaceBottom } = this.props
 
-        return c('krt-Paragraph', {}, className)
+        return c('krt-Paragraph', {
+            'krt-Paragraph--extra-space-bottom': extraSpaceBottom,
+        }, className)
     }
 }
