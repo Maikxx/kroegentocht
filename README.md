@@ -1,7 +1,6 @@
 # Kroegentocht
 
-This project is made for AUAS.
-The project is in Dutch, so be wary.
+This project is made for AUAS within a week, so nothing too fancy.
 
 ## Installation
 
